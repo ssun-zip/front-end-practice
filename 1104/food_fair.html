@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> 음식 박람회 입장 안내</h3>
+    <ul>
+        <li> 초대권 소지자 : 등록데스크에서 본인 확인 후 교환권 지금</li>
+        <li> 사전 등록자: 등록데스크에서 본인 확인 후 교환권 지금 </li>
+        <li> 일반 관람객: 일반 관람객은 매표소에서 입장권을 구입하여 입장</li>
+    </ul>
+
+    <br>
+
+    <h3>얼큰 어묵탕 만들기</h3>
+    <ol>
+        <li> 냄비에 물을 붓고 국물용 티백을 넣고 야채를 썰어 넣어주세요.</li>
+        <li> 물이 끓으면 티백을 건져내고 어묵을 넣어주세요.</li>
+        <li> 간장과 고추가루를 넣고 간을 맞춰주세요. </li>
+        <li> 준비한 그릇에 담아주면 완성입니다! </li>
+    </ol>
+
+    <!-- 정렬 단축키 ctrl + a  ctrl + k + t
+    순서 없는 목록 : 
+    <ul> 글머리 기호 목록 태그 , <li> 목롣 요소
+    구성상 항목의 순서가 내용과 무고난한 경우
+
+    순서 있는 목록:
+    <ol> <li>  -> 항목의 순서가 중요한 경우
+    -->
+    <hr>
+    <header>
+        <center>
+            <h2> &lt; 하이퍼링크 관련 태그 &gt;</h2>
+        </center>
+    </header>
+
+    <section>
+        <article>
+            <a href = "http://www.w3.org" target = "_blank"> W3C 사이트 (blank window) </a> <p/>
+            <a href = "http://www.w3.org" target = "_self"> W3C 사이트 (self window)</a><p/>
+            <a href = "http://www.w3.org" target = "_parent"> W3C 사이트 (parent window)</a><p/>
+            <a href = "http://www.w3.org" target = "_top"> W3C 사이트 (top window)</a><p/>
+        </article>
+    </section>
+
+    <br>
+
+    <header>
+        <center>
+            <h2> &lt; 베이스 태그 사용 &gt; </h2>
+        </center>
+
+        <section>
+            <article>
+                <a href = "standards/" target = "_blank" > W3C Standards</a> 
+                <p/>
+                <a href = "Consortium/mission.html" target = "_blank"> W3C Mission </a> <p/>
+                <a href = "Consortium/facts.hrml" target = "_blank"> Facts aabout W3C</a> <p/>
+                <a href  = "Consortium/presskit.html" target = "_blank"> Press and Analysis</a> <p/>
+            </article>
+        </section>
+    </header>
+
+    <hr>
+
+    <header>
+        <center>
+            <h2> &lt; 책갈피 기능 &gt; </h2>
+        </center>
+    </header>
+
+    <section>
+        <article>
+            <a href = "#user"> [이름] </a> &nbsp;
+            <a href = "#addr"> [주소] </a> &nbsp;
+            <a href = "#tel"> [전화번호] </a> &nbsp;
+            <a href = "#tool"> [참고] </a> &nbsp;
+        </article>
+    </section>
+
+    <p> 정보 영역 </p>
+    .... 생략
+    <p> 정보 영역 </p>
+    <br>
+
+    <p> <a name = "user">홍민성</a></p>
+    <a href = "#top"> [TOP]</a>
+    <p> 정보 영역 </p>
+    .... 생략
+    <p> 정보 영역 </p>
+
+    <p><a id = "addr">서울시 강남구 신사동 291번지</a></p>
+    <a href = "#top"> [TOP]</a>
+
+
+    <p id = "tel"> 02-2323-0909</p>
+    <a href = "#top"> [TOP]</a>
+    <p> 정보 영역 </p>
+    .... 생략
+    <p> 정보 영역 </p>
+
+
+    <!-- 참고는 아직 지정을 안해줬기 때문에 눌러도 아무일이 일어나지않는다. -->
+<hr>
+<header>
+    <center>
+        <h2> &lt; 테이블 &gt; </h2>
+    </center>
+</header>
+
+    <table border = "1">
+        <thead>
+            <tr>
+                <td> thead 내부</td>
+                <td> thead 내부 </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> tbody 내부</td>
+                <td> tbody 내부</td>
+            </tr>
+            <tr>
+                <td> tbody 내부</td>
+                <td> tbody 내부</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+
+            </tr>
+        </tfoot>
+    </table>
+
+    <br>
+
+    <table border = "1">
+        <thead>
+            <tr>
+                <td> </td>
+                <td> 월 </td>
+                <td> 화 </td>
+                <td> 수 </td>
+                <td> 목 </td>
+                <td> 금 </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> 1 교시</td>
+                <td> 자바 </td>
+                <td> 프론트엔드 </td>
+                <td> 안드로이드 </td>
+                <td> 설계 </td>
+                <td> 구현 </td>
+                
+            </tr>
+            <tr>
+                <td> 2 교시</td>
+                <td> 오라클</td>
+                <td> 스프링</td>
+                <td> JSP</td>
+                <td> Html</td>
+                <td> CSS</td>
+            </tr>
+
+        </tbody>
+        
+    </table>
+
+    <br>
+
+    <table border = "1" style = "width: 50%">
+        <tr>
+            <th colspan = "2"> 지역별 홍차</th>
+        </tr>
+        <tr>
+            <th rowspan = "3"> 중국 </th>
+            <td> 정산소종</td>
+        </tr>
+        <tr><td>가문</td></tr>
+        <tr><td>운남</td></tr>
+        <tr>
+            <th rowspan = "4"> 인도 및 스리랑카</th>
+            <td> 아삼</td>
+        </tr>
+        <tr><td>실론</td></tr>
+        <tr><td>대정령</td></tr>
+        <tr><td>닐기리</td></tr>
+    </table>
+
+    <br>
+    <hr>
+    <header>
+        <center>
+            <h2> &lt; 이미지 &gt; </h2>
+        </center>
+    </header>
+    <img id = "roii" src = "roii.png" alt = "펭귄" width = "300" height = "300"/> <p/>
+    <img src = "http://placehold.it/3*00" alt = "그림이 존제하지 않습니다."/>
+    <br>
+    <hr>
+    <header>
+        <center>
+            <h2> &lt; 블록 & 인라인 태그 &gt; </h2>
+        </center>
+    </header>
+    <div style = "background-color:skyblue; padding : 20px;">
+    내가 사람의 방언과 천사의 말을 할지라도
+    <span style = "color:red">사랑</span> 이 없으면 
+    소리 나는 구리와 울리는 꾀가리가 되고,
+    <span style = "color: red;">사랑</span>이 없으면
+    아무것도 아니라.
+    </div>
+    <p> - 우리 서로 사랑하며 살아요 -</p>
+
+    <br>
+
+    <hr>
+    <header>
+        <center>
+            <h2> &lt; 좋아하는 과일 &gt; </h2>
+        </center>
+    </header>
+
+    <table>
+        <tbody>
+            <tr>
+                <td> <img src = "apple.jpg" width = 150  style = "padding: 50px" ></td>
+                <td> <img src = "banana.jpg" width = 150 style = "padding: 50px"></td>
+                <td> <img src = "mango.jpg" width = 150 style = "padding: 50px"></td>
+
+            </tr>
+        </tbody>
+    </table>
+
+
+    <br>
+    <hr>
+    <br>
+    <header>
+        <center> 
+            <h2> &lt; 이미지 삽입 &gt;</h2>
+        </center>
+    </header>
+
+    <p> 엘비스 프레슬리의 사진입니다. </p>
+    <img src = "Elvis.jpg" width = "150" height = "200" alt = "Elvis">
+    <img src = "kitae.jpg" width = "150" height = "200" alt = "사진없음">
+    
+    <img src = "https://post-phinf.pstatic.net/MjAxNzA2MjhfNjkg/MDAxNDk4NjMwODc1NDE5._6_EzrVZpVSxmnlVIEb8IH-IHUVPKrebhE_0o1yVUi8g.tJNysLCL7HLkgCyYPVgMUaAp6GHHHyf29vK8LYVIDWcg.PNG/20170628_151621.png?type=w800_q75" width = "300" height = "200" alt = "사진없음">
+
+    <br>
+    <hr>
+    <br>
+    <header>
+        <center>
+            <h2> &lt; 링크 만들기 &gt; </h2>
+        </center>
+    </header>
+    <b>포탈 만들기</b>
+        <li> <a href = "http://www.naver.com"> 네이버 </a></li>
+        <li> <a href = "http://www.daum.net"> 다음 </a></li>
+    </ul>
+    <br>
+
+    <b>신문 사이트</b>
+    <ul>
+        <li><a href = "http://www.etnews.com"> <img src = "iconetnews.jpg" 
+                    width = 50px alt = "전자신문">
+        </a></li>
+
+        <li> <a href = "http://chosun.com"> <img src = "iconchosun.png" alt  = "조선"  width = 50px></a></li>
+    </ul>
+    <br>
+
+    <a href = "#roii" > 고양이로 이동 </a>
+<br> <hr> 
+
+<header>
+    <center>
+        <h2> &lt; EX2-20 &gt;</h2>
+    </center>
+</header>
+    <h3><u>Elvis Presley</u></h3>
+
+    <ul>
+        <li><a href="#love">Love me tender</a>
+        <li><a href="#can">Can't help falling in love</a>
+        <li><a href="#it">It's now or never</a>
+    </ul>
+    <!-- love me tender 링크를 누르면 이부분으로 온다 -->
+    <h3 id="love">Love me tender</h3>
+    Love me tender, Love me sweet, Never let me go.<br>
+    You have made my life complete, <br>
+    And I love you so.<br>
+    Love me tender, Love me true, <br>
+    All my dreams fulfilled.<br>
+    For my darling I love you, And I always will.<br>
+
+    <!-- Can't fall ~ 링크를 누르면 이부분으로 온다 -->
+    <h3 id="can">Can't help falling in love</h3>
+    Love me tender, Love me sweet, Never let me go.<br>
+    You have made my life complete, And I love you so.<br>
+    Love me tender, Love me true, All my dreams fulfilled.<br>
+    For my darling I love you, And I always will.<br>
+
+    <!-- it's now or never부분을 누르면 이곳으로 데려온다. -->
+    <h3 id="it">Its now or never</h3>
+    It's now or never, Come hold me tight<br>
+    Kiss me my darling, Be mine tonight<br>
+    Tomorrow will be too late,<br>
+    It's now or never. My love won't wait.<br>
+
+    <hr>
+    <header>
+        <center>
+            <h2> &lt; Download &gt;</h2>
+        </center>
+    </header>
+
+    <div> 친구들아! 여기서 다운받아! </div>
+
+    <ul>
+        <li> <a href = "media/Elvis.png" download> 엘비스 이미지 다운로드</a></li>
+        <li> <a href = "media/chapter9.pdf" download> chapter 9 pdf 다운로드</a></li>
+        <li> <a href = "media/EmbraceableYou.mp3" download> mp3 fulfilled 다운로드</a></li>
+        <li> <a href = "hello.html" download> 헬로 html 파일 다운로드</a></li>
+        <li> <a href = "media/test.hwp" download> 한글 파일 다운로드 다운로드</a></li>
+    </ul>
+
+    <hr> 
+    <header>
+        <center>
+            <h2> &lt; Iframe &gt;</h2>
+        </center>
+    </header>
+
+    <h3> 2개의 &lt; iframe &gt; 를 가집니다. </h3>
+    <iframe src = "http://m.daum.net" name = "upper"  width = "300" height = "300"></iframe>
+    <iframe src = "http://www.mk.co.kr" name = "lower" width = "300" height = "300"></iframe>
+        
+
+    <br> <hr>
+    <header>
+        <center>
+            <h2> &lt; src doc 속성 활용 &gt;</h2>
+        </center>
+    </header>
+
+    <h3> srcdoc에 html 문서 작성</h3>
+    <iframe src = "iframe1.html" width = "200" height = "80"
+        srcdoc = "<html><head></head><body>hello</body></html>">
+    </iframe>
+
+    <hr>
+    <header>
+        <center>
+            <h2> &lt; 애국가 Video Tag &gt;</h2>
+        </center>
+    </header>
+    <div> 동해물과 백두산이 마르고 닳도록 하나님이 보우하사 우리나라 만세 </div>
+    <br>
+    <audio controls>
+        <source src="media/Aegukga.mp3" type="audio/ogg">
+      </audio>
+
+<br> <hr>
+    <header>
+        <center>
+            <h2> &lt; 과일 수입 예제 &gt;</h2>
+        </center>
+    </header>
+
+    <caption style="text-align:center"> 과일 수입 표</caption>
+    <table border = "1">
+        <tr>
+            <th> 사과 </th>
+            <th> 바나나 </th>
+            <th> 망고 </th>
+        </tr>
+        <tr> 
+            <td><img src = "apple.jpg" width = 150  style = "padding: 50px" ></td>
+            <td> <img src = "banana.jpg" width = 150 style = "padding: 50px"></td>
+            <td><img src = "mango.jpg" width = 150 style = "padding: 50px"></td>
+        </tr>
+        <tr>
+            <th> 페루 </th>
+            <th> 필리핀 </th>
+            <th> 호주 </th>
+        </tr>
+    </table>
+
+    <hr>
+    <header>
+        <center>
+            <h2> &lt;
+                Background Color &gt;
+            </h2>
+        </center>
+    </header>
+
+    <h1 style = "background-color: red;"> 안녕하세요</h1>
+    <h2 style = "background-color: blue;"> 안녕하세요</h2>
+    <h3 style = "background-color: yellow;"> 안녕하세요</h3>
+
+</body>
+
+
+</html>
