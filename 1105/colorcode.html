@@ -1,0 +1,27 @@
+<!--
+    색 코드 - #rrggbb
+    rr은 빨간색 gg는 초록색 bb는 파란색
+    8비트 범위 (0-255) 로 16진수 (0-FF) 로 표기
+    빨간색 성분 0 * 80 (128), 초록색 성분 없고, 파란색 성분이 0 * FF (255)
+    혼합 보라색 #80 00 FF
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>컬러 다이얼로그로 색 입력</h3>
+    <form>
+        색 선택 <input type="color" value="#8000FF"
+            onchange="document.body.style.color =  this.value">
+            <!--서택한 색을 브라우저의 바탕 글자에 적용하는 자바스크립트 코드-->
+    </form>
+</body>
+<!--
+    시간 정보 입력 폼 요소
+    <input typ e= "month | week | date | time | datetime-local">
+-->
+</html>
