@@ -1,0 +1,35 @@
+<!--
+    HTML 태그의 인라인 태그와 블록 태그로 나뉨
+    인라인 태그는 인라인 박스, 블록 태그는 블록 박스로 출력
+    블록 박스와 인라인 박스의 디폴트 풀력 모양
+    블록 박스는 새라인에서 시작
+    인라인은 블록 안에 배치 옆에서 다른 태그 배치 가능
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> display 프로퍼티 </title>
+        <style>
+            div{
+                border: 2px solid yellow;
+                color: blue;
+                background: aliceblue;
+            }
+            span{
+                border: 3px dotted red;
+                background: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>인라인, 인라인 블록, 블록</h3><hr>
+        나는 <div style="display:none">
+        div(none)</div>입니다.<br><br>
+        나는 <div style="display:inline-block; height:50px">
+        div(inline-block)</div>입니다.<br><br>
+        나는 <div>div<span style="display:block">
+        span(bolck)</span>입니다.</div>
+    </body>
+</html>
