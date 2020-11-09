@@ -1,0 +1,40 @@
+<!--
+    꽝! 글자의 크기를 3초에 걸쳐 500%에서 100%로 서서히 축소되는 애니메이션을
+    작성하여라. 애니메이션은 무한 반복한다. 0% from 100% to 
+
+    전환이란?
+    HTML tag에 적용된 css3 property값의 변화를 서서히 진행시켜 애니메이션 효과 생성
+    HTML태그의 색이나 모양, 위치 등이 서서히 변하는 효과
+    전환 설정 : transition property 이용
+    <span> 태그의 글자가에 변화가 일어남ㄴ, 5초에 걸쳐 서서히 변화가 진행되도록 전환 지시
+    
+    span {
+        transition: font-size 5s;
+    }
+    <span>태그에 마우를 올리면 글자 크기를 500% 확대 -> 전환 효과 시작
+    span:hover {
+        font-size : 500%;
+    }
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            transition: font-size 5s;
+        }
+
+        span:hover {
+            font-size : 500%;
+        }
+    </style>
+</head>
+<body>
+    <h3> font-size에 대한 전환 </h3> <hr>
+    <p><span>꽝!</span> 글자에 마우스를 올려보세요.</p>
+</body>
+</html>

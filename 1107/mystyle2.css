@@ -1,0 +1,375 @@
+/* 기본 설정 */
+*{
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: "굴림", Gulim, Arial, sans-serif;
+    /*
+    전체 컨텐트를 둘러싸고 있는 큰 박스에 
+    margin과 패딩을 0 으로 지정하고
+    border-sizing : element 의 가로 세로에 
+                    padding과  border을 넣을수 있도록 헤준다. 
+    list- style : 리스트에 아무 스타일을 넣지 않는다.
+                  즉, bullet point도 들어가지 않는다. 
+    */
+}
+.container{
+    width: 1080px;
+    height: 100%;
+    padding: 0 20px;
+    /*
+    container class을 가로 길이는 fixed 로 1080px을 
+    정해주고 길이는 text길이에 따라 늘어난다. 
+    그 안의 겉에 패딩을 위 아래로는 지정하지 않고 
+    양옆으로 20px씩 지정한다. 
+    */
+}
+li{ 
+    /* item in a list > li
+       order -> ol unorder -> ul */ 
+    float: left;
+    /* 리스트의 모든 목록들을 왼편으로 position */
+}
+a{
+    /*<a> 태그는 <a href = ..> 링크를 의미한다.  */
+    width: 100%;
+    height: 100%; 
+    color: inherit; 
+    /* 자식에서 지정하지않아, 부모 요소에서 상속받은 색상으로 지정 */
+    text-decoration: none;
+    display: inline-block;
+    /* 위아래 패딩을 지정할수있고 너비와 높이 설정이 가능한 블록 설정*/
+}
+body{
+    min-height: 100vh;
+    /* vertical height 
+       vh 요소는 높이값의 100분의 1의 단위입니다.
+       100vh = entire page */
+    position: relative;
+}
+.clear{
+    clear: both;
+    /* 오른쪽 왼쪽을 모두 취소한다 */
+}
+/* //기본 설정 */
+
+/* header */
+header{
+    width: 100%;
+    height: 75px;
+    line-height: 75px;
+    /*라인 박스의 높이*/ 
+    color: #00bd39;
+}
+header .logo{
+    float: left;
+    margin-top: 50px;
+    /* 컨테이너가 왼쪽에 항시 떠있는다
+        종류 - left, right, none, inherit(부모의 부동 소수점값을 상속 )
+    */
+    font-size: 24px;
+    font-weight: 700;
+}
+
+header .sidemenu{
+    float: right;  /* 컨테이너가 오른쪽에 항시 떠있는다 */
+}
+header .sidemenu > li{
+    width: 100px;
+    text-align: center; /*글자를 가운데에 모은다. */
+    cursor: pointer; 
+    /* 마우스를 가져다 댔을때 마우스의 모양
+        종류 > default, help, crosshair, not-allowed, zoom-in, grab 
+                context-menu, progress, pointer, vertical, text 등... 
+    */
+    font-weight: 700;
+}
+header .sidemenu > li:hover{
+    color: green;
+}
+/* //header */
+
+/* nav */
+nav{
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #cbcbcb;
+}
+nav .leftMenu{
+    /* nav class안에 있는 leftMenu라는 이름을 가진 id*/
+    float: left;
+    height: 100%;
+    font-size: 19px;
+    font-weight: bold;
+}
+/* X> Y 후계가 직계 자신만을 선택했단느 의미입니다. */
+nav .leftMenu > li{
+    /* id = leftMenu 인 nav의 직계자손인 li만 대상으로 한다.  */
+    width: auto;
+    padding: 0 20px;
+    height: 100%;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    /*
+    relative =>  정상위치를 기준으로 함 
+    position의 종류 
+    => static, relative, fixed, absolute, sticky*/
+}
+nav .leftMenu > li:hover > .dropmenu{
+    visibility: visible;
+    /*
+    id = leftMenu 인 nav의 직계손자인 li가 hover되었을때
+    dropmenu가 보이도록 설정하여라. 
+    */
+}
+nav .leftMenu > li > .dropmenu{
+    /* id = leftMenu 인 nav의 직계손자인 li의  dropmenu 설정하여라. */
+    display: inline-block;
+    width: 150px;
+    clear: both;
+    position: absolute;
+    top: 59px;
+    left: 0;
+    text-align: left;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
+    /*박스에 그림자 지정 
+     -> 문법 : box-shadow : none | h-shadow v-shadow blur spread color | inset
+    */
+    visibility: hidden;
+}
+nav .leftMenu > li > .dropmenu > span{
+/*id = leftMeny인 nav의 직계손자인 li안의 dropmenu 안의 <span>인 부분의 스타일 지정*/
+    width: 100%;
+    display: inline-block;
+    padding-left: 20px;
+    background: #00bd39;
+    color: white;
+    font-weight: 400;
+}
+nav .leftMenu > li > .dropmenu > span:hover{
+    /*span을 hover (마우스를 가져다 댔을때 폰트의 굵기를 키워라!*/
+    font-weight: 700;
+}
+
+nav .leftMenu > li:hover{
+/*id= leftMenu 인 nav의 직계손자 리스트를 호버했을때 */
+    color: #00bd39;
+    font-weight: 700;
+    border-bottom: 3px solid #00bd39;
+    /*구문 :
+    border-bottom : border-width border-style border-color | initial | inherit;*/
+}
+nav .leftMenu > li.active{
+    /* :active 선택은 링크를 클릭하면 활성화가 됩니다. 
+        링크를 클릭했을때 색변화, 폰트 굵기를 굵게하며
+        3px굵기의 초록색 줄의 밑줄을 그어라. 
+    */
+    color: #00bd39;
+    font-weight: 700;
+    border-bottom: 3px solid #00bd39;
+}
+
+nav .rightMenu{
+    float: right;
+    /*nav class의 rightMenu는 항상 오른쪽에 띠어라*/
+}
+nav .rightMenu > li{
+    width: 100px;
+    height: 36px;
+    line-height: 32px;
+    margin-top: 12px;
+    margin-left: 10px;
+ /*margin을 top/ left로 구별해서 넣어줌. 
+    else, margin : top right bottom left
+    형식으로 넣어주어도 된다. */
+    padding: 0 10px;
+    text-align: center;
+    
+    color: #00bd39;
+    font-weight: 700;
+    border: 2px solid #00bd39;
+    cursor: pointer;
+    border-radius: 50px;
+    /*리스트 박스의 모서리를 둥글게 바꾸어준다. */
+}
+nav .rightMenu > li:hover, nav .rightMenu > li.active{
+/* id = rightMenu 인 nav class안에 list를 hover하거나
+    링크를 눌렀을 경우 활성화 시킨다. 
+*/
+    color: white;
+    background: #00bd39;
+}
+/* //nav */
+
+/* #section1 */
+section{
+    width: 100%;
+    height: 650px;
+    padding: 30px 0;
+    background: #fafafa;
+}
+
+/* footer */
+footer{
+    /* footer는 page의 맨 하단 부분을 일컫는다. */
+    width: 100%;
+    height: 115px;
+    border-top: 1px solid #cbcbcb;
+    background: white;
+    font-size: 18px;
+}
+footer > .container{
+    height: auto;
+}
+footer .top{
+/*footer class 안의id=top 인 부분 설정*/
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #cbcbcb;
+    margin-bottom: 15px;
+}
+footer .top span{
+/*footer class id=top 그안에 <span>태그 부분 */ 
+    height: 100%;
+    line-height: 40px;
+    padding-right: 15px;
+    cursor: pointer;
+}
+footer .top span:hover{
+/*footer class id=top 그안에 <span>태그 부분 hover했을때*/ 
+    font-weight: 700;
+}
+footer .copyright{
+/*footer class id = copyright */
+    margin-top: 5px;
+}
+/* //footer */
+
+
+/* section 2 수정  */
+
+#section2 {
+    height: 520px;
+}
+#section2 > .container > .loginBox{ 
+    /*섹션2 안에 컨테이너 클라스 안에 로그인 박스에만 적용.
+      로그인박스의 기본 설정  */
+    width: 100%;
+    height: 100%;
+    background: white;
+    border: 1px solid #CBCBCB;
+}
+#section2 .loginBox > div{ 
+    /*션션2 로그인박스클라스 의 자손 div*/
+    width: 100%;
+    height: 320px;
+    border-bottom: 1px solid #CBCBCB;
+}
+#section2 .loginBox .box{ 
+    /*section2 - loginbox 의 box클래스 즉
+     로그인과 소셜 로그인 부분에 해당하는 스타일*/
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding: 30px 30px;
+    border-right: 1px solid #CBCBCB;
+}
+#section2 .loginBox .box .logo{
+    /* 로그인과 소셜로그인 글씨에 해당하는 스타일*/
+    height: 55px;
+    border-bottom: 2px solid black;
+}
+#section2 .loginBox .box form{
+    /*로그인박스의 로그인 박스안에
+    아이디, 비밀번호 로그인 input이 들어있는 form 틀에 
+    위 margin을 넣어준다. */
+    margin-top: 20px;
+}
+#section2 .loginBox .box input{
+    /* 아이디와 비밀번호 text input 스타일 변경 */
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+#section2 .loginBox button{
+    /* 로그인박스안에 모든 버튼에 적용
+        로그인, 소셜로그인 버튼 기본 색상은 초록으로
+        그리고 마우스를 가져갔을때 손모양이 나오도록 설정 */
+    width: 100%;
+    height: 40px;
+    background: #00BD39;
+    color: white;
+    border: 0;
+    font-size: 16px;
+    outline: 0;
+    cursor: pointer;
+}
+#section2 .loginBox .box form > button {
+    /*로그인 박스에 버튼 위에 마진 30px */
+    margin-top: 30px;
+}
+#section2 .social{
+    /*소셜 로그인하기 박스 위에 마진은 0*/
+    margin-top: 0px;
+}
+#section2 .social > h1{
+    /* 소셜 로그인하기 글자와 줄 밑에 마진*/
+    margin-bottom: 20px;
+}
+#section2 .social > button{
+    float: left;
+    margin-top: 10px;
+    /*소셜 로그인 버튼들이 왼쪽으로 고정으로 떠있으며 위에 각각 10px마진을 넣어준다.*/
+}
+#section2 .social > button.facebook{
+    background: #3B5999;
+    margin-top: 33px;
+/*소셜 로그인하기 박스안 소셜 클래스에 페이스북 버튼에만 적용 */
+}
+#section2 .social > button.twitter{
+    background: #1DA1F3;
+ /*소셜 로그인하기 박스안 소셜 클래스에 트위터 버튼에만 적용 */
+
+}
+#section2 .social > button.naver{
+    background: #00BD39;
+/*소셜 로그인하기 박스안 소셜 클래스에 네이버 버튼에만 적용 */
+
+}
+#section2 .alert{
+    padding: 20px 30px;
+    /*도움이 필요한부분에 위 아래- 20 씩 양옆-30씩 패팅*/
+}
+#section2 .alert button{
+    width: calc(50% - 10px);
+    /*넓이를 50%으로 오른쪽으로 -10px -> 10 씩 마진**/
+    margin-top: 15px;
+    float: left;
+    background: white;
+    color: #00BD39;
+    border: 1px solid #00BD39;
+    /*도움말 부분의 버튼부분 스타일. 왼쪽으로 띄우는 위치.*/
+}
+#section2 .alert button:nth-child(1){
+     /*두 버튼중 첫번째인 아이디찾기 버튼 스타일 지정*/
+
+    margin-right: 10px;
+}
+#section2 .alert button:last-child{
+    /*두개중 마지막은 비밀번호찾기 버튼 스타일 지정*/
+    margin-left: 10px;
+}
+#section2 .alert button:hover{
+    /*버튼에 마우스를 가져댔을때 색이 초록색으로 변한다*/
+    color: white;
+    background: #00BD39;
+}
+
+
+
+
+
