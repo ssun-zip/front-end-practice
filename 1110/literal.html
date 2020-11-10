@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상수</title>
+    
+</head>
+<body>
+    <h3> 상수 </h3> <hr>
+    <script>
+        var oct = 015; // 015는 8진수 10진수로는 13
+        var hex = 0x15; // 0x15는 16진수, 10진수로는 21
+        var condition = true ; //true로 하면 안됨
+
+        document.write("8진수 015는 십진수로 " + oct + "<br>");
+        document.write("16진수 0x15는 십진수로 " + hex + "<br>");
+        document.write("condition은 " + condition + "<br>");
+        document.write("문자열 : 단일인용부호로도 표현 " + "<br>");
+        document.write("그녀는 \"누구세요\" 라고 했습니다. ");
+
+        // 산술연산 
+        var x = 32;
+        var total = 100 + x * 2/4 - 3; // total 은 113
+        var div = x / 10; // div 는 3.2
+        var mod = x % 2; // x를 2로 나눈 나머지, 0
+
+        document.write("x : " + x + "<br><br>");
+        document.write("100 + x * 2 / 4 - 3 = " + total  + "<br>");
+        document.write("x / 10 = " + div  + "<br>");
+        document.write("x % 2 = " + mod + "<br>");
+
+        // 대입연산
+        var x = 3, y = 2, z = 3;
+        document.write("x=" + x + ", y=" + y);
+        document.write(", z=" + z + "<br><br>");
+
+        x +=3 ; // 6
+        y +=3;  // 5
+        z +=3;  // 6
+
+        document.write(" x += 3; 실행 후, x=" + x + "<br>");
+        document.write(" y += 3; 실행 후, y=" + y + "<br>");
+        document.write(" z += 3; 실행 후, z=" + z + "<br>");
+
+        //논리 연산자
+        var x = true; y = false;
+        document.write("x = " + x + ", y = " + y + "<br><br>");
+        document.write("x && y : " + (x&&y) + "<br>");
+        document.write("x || y : " + (x||y) + "<br>");
+        document.write("!x: " + (!x) + "<br>");
+        document.write("<hr>");
+        document.write("(3>2) && (3<4) : " + ((3>2)&&(3<4)) + "<br>");
+                        // true && true  =  true
+        document.write("(3==-2 || (-1<0) :"  + ((3==2)||(-1<0)) + "<br>");
+                            // false OR  true = true 
+        document.write("<br>"); 
+
+        /* 조건 연산
+        condition ? expT : expF
+        condition이 true이면 전체 결과는 expT의 계산 값
+        false이면 expF의 계산값
+        var x = 5, y = 3;
+        var big = (x > y) ? x : y; // (x> y)가 true이면 x 값 5 가 big에 대입
+        */
+        var a = 3, b = 5;
+        document.write("a= " + a + ". b = " + b + "<br><br>");
+        document.write("두수의 차이 : " + ((a>b)?(a-b):(b-a)));
+
+
+        //비트연산
+        function digit8(v) {
+            //숫자 v를 8 비트 2진수로 변환
+            var str = "";
+            for(i = 0; i < 8; i++, v<<1){
+                if((v & 0x80)) str += "1";
+                else str += "0";
+            }
+            return str;
+        }
+
+    </script>
+
+    <h3> 비트 논리연산자와 시프트 연산자</h3> <hr>
+    <script>
+        var x = 10, y = 2;
+        document.write("<pre>");
+        document.write("x= " + x + ", y=" + y + "<br>"); //x, y 값 출력 
+        document.write("x=          " + digit8(x) + "<br>"); //x출력 
+        document.write("y=          " + digit8(y) + "<br>"); //y출력 
+        document.write("<hr>");
+        document.write("x & y :      " + digit8(x&y) + "<br>"); //x출력 
+        document.write("x | y :      " + digit8(x|y) + "<br>"); //x출력 
+        document.write("x ^ y :      " + digit8(x^y) + "<br>"); //x출력 
+        document.write("~x    :      " + digit8(~x) + "<br>"); //x출력 
+        document.write("<hr>");
+        document.write("x << 1 :      " + digit8(x<<1) + "(" + (x<<1) + ")" + "<br>"); //x출력 
+        // 곱하기 2 효과
+        document.write("x >> 1 :      " + digit8(x>>1) + "(" + (x>>1) + ")" + "<br>"); //x출력 
+        // 나누기 2효과
+        document.write("x >>> 1 :      " + digit8(x>>>1) + "(" + (x>>>1) + ")" + "<br>"); //x출력 
+        // 이동 효과 
+        document.write("</pre>")
+    </script>
+
+</body>
+</html>

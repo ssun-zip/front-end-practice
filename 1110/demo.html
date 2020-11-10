@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+img{
+	width:500px; 
+	height:350px;
+    /*이미지 크기 설정*/
+}
+.mySlides{
+	display:none;
+}
+/* 초기설정은 슬라이드 사진드을 모드 보이지않게 설정한다. */
+a.leftbtn{position:absolute;top:45%;left:0;}
+a.rightbtn{position:absolute;top:45%;right:0;}
+/* <  &  > 버튼을 양끝에 사진의 위에서 45% 위치에 배정한다. 
+    position 이 absolute임으로 화면의 크기가 달라져도 위치는 달라지지않는다. */
+div.large{max-width:100%; position:relative; }
+div.small{max-width:500px;position:relative;}
+</style>
+<script>
+var slideIndex=1;
+// slideIndex 몇번째 슬라이드인지를 알려주는 객체 생성 
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  // document object를 탐색하여 "mySlides" 클래스 이름을 가진 자식 요소들을
+  // 모든 object를 리턴한다. 
+  if (n > x.length) {slideIndex = 1}   
+  //  왼쪽 오른쪽을 눌러 더해진 숫자가 x의 갯수 (이미지의 갯수)보다 크게거되면
+  //  n을 1로 업데이트 하여라. 
+  //  1>2>3>4>1>2>3>4...
+  if (n < 1) {slideIndex = x.length} ;
+   //  왼쪽 오른쪽을 눌러 더해진 숫자 (현재 인덱스 번호)가 1 보다 작아지면 
+  //  슬라이드를 마지막 슬라이드로 보여주어라
+  // 4 > 3> 2> 1> 4 > 3> 2> 1 
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+     // document object안에 "mySlide" class name을 가진 [i]번째 자식을
+     // 리턴하고 보이지 말아라. (숨겨라)
+  }
+  
+  x[slideIndex-1].style.display = "block";
+  // documet안의 mySlides class 를 가진 0번쨰 array에 있는 element를
+  // 블록 style로 나타내어라. 
+}
+</script>
+</head>
+<body onload="showDivs(1)">
+    <!--
+        onload = 문서의 로드 시점 
+        : 문서가 콘텐츠가 로드된 후 발생하는 이벤트 (load event)
+          완전히 로드 한 후 스크립트를 실행하기 위해 자주 이용 / 불필요한 로딩시간을 줄임. 
+    -->
+<div align="center" class="large">
+	<h2 align="center">Manual Slides</h2>
+	<div class="small">
+		<img class="mySlides" src="picture/s1.jpg">
+		<img class="mySlides" src="picture/s2.jpg">
+		<img class="mySlides" src="picture/s3.jpg">
+		<img class="mySlides" src="picture/s4.jpg">
+		<img class="mySlides" src="picture/s5.jpg">
+		
+        <a class="leftbtn" onclick="plusDivs(-1)">◀</a>
+        <!--왼쪽 버튼 클릭했을때 스크립트 n에 -1을 더해준다.-->
+        <a class="rightbtn" onclick="plusDivs(1)">▶</a>
+         <!--왼쪽 버튼 클릭했을때 스크립트 n에 +1을 더해준다.-->
+
+	</div>
+</div>
+</body>
+</html> 
