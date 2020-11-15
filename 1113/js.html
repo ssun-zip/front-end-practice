@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 버튼 두개의 변화하기 시작 일단 맨앞에 하나부터 
+        function setBorder() {
+            var span = document.getElementById("mySpan");
+            // mySpan 부분을 지정하는 variable 
+            // document 에서 id = "mySpan"
+            span.style.border = "2px dotted violet";
+            // border button을 누르게 되면 바이올랫 색상의 테두리 형성
+        }
+
+        // p button 을 누를때 변화하는 script 
+        function howMany() {
+            var pArray = document.getElementsByTagName("p");
+            // document에서 tagName <p> 인 경우 varaible 에 저장하여라 
+            alert("<p>  태그의 개수는 " + pArray.length);
+            // 버튼을 눌렀을때 <p> 태그의 개수를 alert으로 띠워라 
+        }
+    </script>
+</head>
+<body>
+    <h3> 자바 스크립트란? 
+        <button onclick = "setBorder()"> border </button>
+        <button onclick = "howMany()"> p </button>
+    </h3> <hr>
+
+    <p> 자바스크립트는 웹 프로그래밍 언어로서 우베 페이지를 동적 변경 시킬 수 잇다.</p>
+    <p> <span id = "mySpan"> C 언어</span> 를 아는 사용자는 빠르게 학습할 수 있다. </p>
+    <p> 이벤트 등 GUI 프로그래밍에 필요한 요소들이 있어 학습에 약간의 어려움이 있다. </p>
+    <img src = "media/8-2DOMTree.PNG" width = "400" height = "300" alt = "DOM 트리">
+</body>
+</html>

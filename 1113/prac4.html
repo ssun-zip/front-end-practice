@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            visibility: hidden;
+            color: blue;
+        }
+    </style>
+    <script>
+        function show() {
+            var objArray = document.getElementsByTagName("span");
+            // span 태그들을 varaible 로 불러오기 
+            for(var i = 0; i < objArray.length; i++){
+                var obj = objArray[i];
+                // span 단어들이 모여있는 array 를 obj로 하나씩 추출 
+                var style = window.getComputedStyle(obj);
+                // 인자로 전달받은 요소의 모든 CSS 속성값을 담은 객체를 회신. 
+                //getComputedStyle에서 반환된 객체는 읽기 전용이며 요소
+                // CSS속성 값은 getPropertyValue(propName) API를 사용
+                var v = style.getPropertyValue("visibility");
+                // 인라인 스타일에서 변수 얻기
+                // span - visibility 
+                if (v == "hidden") obj.style.visibility = "visible";
+                // Element inline Style 
+                // span의 visibility 를 visible 로 설정 
+                // hidden 다음에는 button 을 눌렀을때 visible 로 세팅 
+                else obj.style.visibility = "hidden";
+                // visible 다음에 버튼을 눌렀을 경우 hidden 으로 지정 
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3> 다음 빈 곳에 숨은 단어?
+        <button onclick="show()"> show / hide</button> <hr>
+        <!-- script show() 함수 실행 -->
+    </h3>
+    <ul>
+        <li> I (<span>love</span>) you.</li>
+        <li>CSS is Cascading (<span>Style</span>) Sheet. </li>
+        <li>응답하라(<span>1988</span>).</li>
+    </ul>
+</body>
+</html>

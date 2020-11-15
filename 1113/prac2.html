@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<title>라면을 끓이는 순서</title></head>
+<body>
+<h3>라면을 끓이는 순서</h3>
+<hr>
+<ol type="A">
+	<li>물을 끓인다.</li>
+	<li>라면과 스프를 넣는다.</li>
+	<li>파를 썰어 넣는다.</li>
+    <li>5분 후 <strong>맛있게</strong> 먹는다.</li>
+    <!--
+        <Strong> </Strong> 는 "strong importance"
+        중대하거나 긴급한 콘텐츠를 나타냅니다. 보통 브라우저는 굵은 글씨로 표시합니다.
+    --> 
+</ol>
+<script>
+var liArray = document.getElementsByTagName("li");
+/* .getElementByTagName("li")
+    : document 안에 특정 태그를 불러온다 
+*/
+for(i=0; i<liArray.length; i++) {
+	var obj = liArray[i];
+    obj.style.color ='green';
+    /* obj 라는 이름을 가진 varaible 에 liArray 에서 뽑아낸 
+        <li> 안의 모든 글짜들을 하나씩 뽑아 색을 초록색으로 설정 */
+}
+</script>
+<img src="media/8-1DOMTree.png" width="400" height="300" alt="DOM 트리">
+</body>
+</html>
