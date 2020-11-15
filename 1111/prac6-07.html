@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>
+            큰 자리수와 낮은 자리수
+        </title>
+    </head>
+    <body>
+        <h3>큰 자리수와 낮은 자리수가 같은지 비교</h3><hr>
+        <script>
+            var str = prompt("숫자 입력", "0");
+            //isFinite() function determines whether the passed value 
+            // is a finite number            
+            if(isFinite(str)) {
+                var n = parseInt(str);
+                if(n > 0) { // 양수인 경우에만
+                    var least = n % 10; // 1의 자리수
+                    var most = 0;
+                    while(n != 0) {
+                        most = n % 10;
+                        // 정수 출력해서 십의 자리의 숫자를 찾기
+                        // n / 10 -> 십의 자리 추출 
+                        n = Math.floor(n/10);
+                    }
+                    //한자리 숫자일 경우는 같음으로 출력 
+                    if(most==least)
+                        document.write(str + ": 같음");
+                    else
+                        document.write(str + ": 다름");
+                } 
+                else
+                    document.write(str + ": 음수나 0은 다루지 않습니다.");
+            }
+            // 숫자가 아닐 경우 
+            else {
+                document.write(str + ": 숫자가 아닙니다.");
+            }
+        </script>
+        <!--
+            Math.floor() : 
+            returns the largest integer less than or equal to a 
+            given number.
+            * console.log(Math.floor(5.95));
+              -> expected output: 5
+            * console.log(Math.floor(-5.05));
+              -> expected output: -6
+        -->
+    </body>
+</html>

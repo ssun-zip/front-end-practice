@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>자바스크립트 코드 위치</title>
+        <script>
+            // 마우스를 올렸을 때 노란색으로 변경하기 위한 함수
+            // hover과 비슷한 역할 
+            function over(obj) {
+                obj.style.background = "yellow";
+            }
+            // 마우스를 떼었을 때 다시 하얀색으로 돌아가기 위한 함수
+            function out(obj) {
+                obj.style.background = "white";
+            }
+        </script>
+    </head>
+    <body>
+        <h3>마우스를 올려 보세요</h3><hr>
+        <div onmouseover="over(this)" onmouseout="out(this)">
+        여기에 마우스를 올리면 배경색이 노란색으로 변합니다.</div>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>document.write()</title>
+    </head>
+    <body>
+        <script>
+            document.write("<h3>document.write()로 표만들기</h3>");
+            document.write("<hr>");
+            document.write("<table border = '1'");
+            /*
+                <th>태그는 HTML 테이블의 헤더 셀을 정의합니다.
+                    헤더 셀-헤더 정보를 포함합니다 ( <th>요소로 생성됨 ).
+                    데이터 셀-데이터 포함 ( <td> 요소로 생성됨 )
+                <th>요소 의 텍스트는 기본적으로 굵게 표시되고 중앙에 표시됩니다.
+                <td> 요소의 텍스트는 기본적으로 규칙적이고 왼쪽 정렬됩니다.
+            */
+                document.write("<tr>");
+                document.write("<th>");
+                document.write("n");
+                document.write("</th>");
+
+                for(j=0; j <10; j++) {
+                    document.write("<td>");
+                    document.write(j);
+                    document.write("</td>");
+                }
+                document.write("</tr><tr>");
+                document.write("<th>");
+                document.write("n<sup>2</sup>");
+                document.write("</th>");
+
+                for(j=0; j <10; j++) {
+                    document.write("<td>");
+                    document.write(j*j);
+                    document.write("</td>");
+                }
+                document.write("</tr>");
+            document.write("</table>");
+        </script>
+        <!--
+            <table border = '1'>
+                <tr>
+                    <th> n </th>
+                        <td> 0 </td> 
+                        <td> 1 </td> 
+                        <td> 2 </td> 
+                        <td> 3 </td> 
+                        <td> 4 </td> 
+                        <td> 5 </td> 
+                        <td> 6 </td> 
+                        <td> 7 </td> 
+                        <td> 8 </td> 
+                        <td> 9 </td> 
+                </tr>
+                <tr>
+                    <th> n <sup>2</su></th>
+                        <td> 0 </td>
+                        <td> 1 </td>
+                        ...... 
+                </tr>
+            </table>
+        -->
+        </body>
+</html>

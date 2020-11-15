@@ -1,0 +1,129 @@
+<html>
+<head>
+    <title>if-else</title>
+</head>
+<body>
+    <h3>if-else를 이용한 학점 매기기</h3>
+    <hr>
+    <script>
+        var grade;
+        var score = prompt("기태님 점수를 입력하세요", 100);
+        //사용자에게 점수를 입력을 묻는 프롬프트 상자를 표시하고 메세지를 출력한다.
+        // 상자 input 에 default 는 100이 쓰여져 있다. 
+        score = parseInt(score);
+        // parseInt : 문자열을 구문 분석하고 정수를 반환
+        if (score >= 90)
+            grade = "A";
+        else if (score >= 80)
+            grade = "B"
+        else if (score >= 70)
+            grade = "C"
+        else if (score >= 60)
+            grade = "D"
+        else
+            grade = "F"
+        document.write(score + "는 " + grade + "입니다.<br>");
+        // 메인 페이지에 print 한다.  
+    </script>
+</body>
+</html>
+<!-- 
+자바스크립트 정규식
+1. 한글 입력 막기
+oobj.value = obj.value.replace(/[\ㄱ-하-ㅣ가-힣]/g '');
+2. 영문, 숫자만 허용
+$(this).val($(this).val().replace(/[^a-zA-Z0-9]/g));
+3. 숫자만 허용
+style = "ime-mode:disabled"
+if (event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 ||
+event.keyCode == 39 || event.keyCode == 46) {return;}
+if((event.keyCode >= 48 && event.keyCode <= 57) ||
+(event.keyCode >= 96 && event.keyCode <= 105)) {return true;}
+else {return false;}
+4. 아이디 체크
+// 아이디 - 한글, 특수문자 제외
+$("$id").on("keydown", function(event) {
+    if (evnet.keyCode == 8 || event.keyCode == 46) {return;}
+    $(this),val($(this).val().replace(/[^a-zA-Z0-9]/g, ''));
+}).css({"img-mode": "disabled"});
+3.1 천단위 콤마 넣기
+//콤마찍기
+function numberFormat(num) {
+    var pattern = /(-?[0-9]+)([0-9]{3})/;
+    while (pattern.test(num)) {
+        num = num.replace(pattern, "$1, $2");
+    }
+    return num;
+}
+//콤마제거
+function unNumberFormat(num) {
+    return (num.replace(/\, /ㅎ, ""));
+}
+최대한 조사해서 적어 넣으세요!!!
+
+return;
+반환 및 종료를 뜻한다
+현재 함수를 종료학 호출한 곳으로 이동해라
+반환 값이 있을 경우 해당되는 반환값과 함께 호출한 곳으로 이동하라
+main() 함수에서 return문을 만나면 해당프로그램을 종료하게 된다
+리턴값 
+0 정상종료
+-1 에러발생
+1 정상종료 되었으나 다른 인자가 있다
+-2 에러발생 하였고 구체적으로 어떤것인지 나타낸다
+
+자바 스크립트에서 RETURN의 의미
+-return과 return false는 서로 같은 의미
+return은 false를 생략한 문법이다
+<form name = 'f' action = 'next.php' onSubmit="return check();" method = 'post'>
+    와 같이 정의해 주는게 일반적
+return check()라는 것은 check() 함수를 호출하여 false가 리턴되면 폼을 전송하지 말라는 의미
+
+예문>
+function check() {
+    if(f.name.value.length<2) {
+        alert('이름은 2글자 이상이어야 합니다.');
+    }
+    else return false;
+}
+이렇게 되어 있다고 했을 때,
+f라는 폼에서는 전송 시에 먼저 check() 함수를 실행하고,
+만일 이름을 2자 이하로 입력했을 경우, '이름은 2글자 이상이어야 합니다.'
+라는 경고창을 띄워주고, return false 를 만나게 됨
+그러면 폼은 전송되지 않는다,
+만일 이름을 2글자 이상 입력되었다면 else 문에서 return true를 만나게 됨
+그럼 폼은 전송하여
+서버단이나 다른 html로 전송하게 됨
+
+다시 정리하면
+onSubmit = "return check();" 라고 되어 있는 것은,
+폼 전송시에 check 함수를 실행 후 false가 리턴되면 폼을 전송하지 말고,
+그 외에는 폼을 전송하라...는 뜻
+
+자바스크립트에서 이벤트 핸들러의 return값의 이미
+
+대부분의 경우에 이벤트 핸들러는 return값을 사용하여 그 이벤트의 처리를 결정할 수 있다.
+예를 들면 폼 확인을 수행하기 위해 form객체의 onSumit이벤트 핸들러를 사용하여
+사용자가 모든 필드를 채우지 않은 것을 발견하면 폼이 전송되지 않도록 핸들러에서 false를 반환할 수 있다.
+일반적으로, onclick, onsubmiㅅ 이벤트 핸들러는 false를 return해야 
+해당 이벤트에 다른 기본동작이 수행되는 것을 막을 수 있고 prevent() onMouserOver의 경우는 true를 return해야
+해당 이벤트에 따른 기본동작이 수행되는 것을 막을 수 있다.
+
+
+// 숫자만 입력받기 
+function fn_press(event, type){
+    if ( type == "numbers"){
+        if (event.keyCode < 48 || event.keyCode > 57) return false;
+        // onKeyDown일 경우 좌, 우, tab, backspace, delete 키 허용 정의 필요
+    }
+}
+
+// 한글입력 방지 
+function fn_press_han(obj){
+    //좌우 방향키, backspace, delete, tab key exception
+    if(event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39
+     || event.keyCode == 46) return ; 
+
+     obj.value = obj.value.replace(/[\ㄱ-하-ㅣ가-힣]/g '');
+}
+--> 

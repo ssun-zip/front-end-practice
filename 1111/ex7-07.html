@@ -1,0 +1,61 @@
+<!-- 
+String
+문자열을 담기 위한 객체
+String 객체는 일단 생성되면 수정 불가능
+var hello = new String("Hello");
+var res = hello.concat("Javascript");
+
+// concat() 후 hello의 문자열 변화 없음
+res 객체에는 "HelloJavascript" 저장 되어있음
+문자열 길이
+String 객체의 length 프로퍼티: 읽기전용
+문자열을 배열처럼 사용
+[] 연산자를 사용하여 각 문자에 접근
+ -->
+
+ <html>
+     <head>
+         <title>String 객체의 메소드 활용</title>
+     </head>
+     <body>
+         <h3>String 객체의 메소드 활용</h3><hr>
+         <script>
+             var a = new String("Boys and Girls");
+             var b = "!!"
+             document.write("a : " + a + "<br>"); // "Boys and Girls")
+             document.write("b : " + b + "<br><hr>"); // "!!"
+            // 0 1 2 3 4 5 6 7 8 9 10 11 12 13
+            // B o y s - a n d - g i  r  l  s
+             document.write(a.charAt(0) + "<br>"); // B
+             document.write(a.concat(b, "입니다")+ "<br>"); 
+             // a.concat(b, "입니다") -> Boys and Girls!!입니다
+             document.write(a.indexOf("s") + "<br>");
+             // a.indexOf("s") = 3
+             document.write(a.slice(5, 8) + "<br>");
+             // arr.slice([start, end - exclusive]])
+             // "and" 출력 
+             document.write(a.substr(5, 3) + "<br>");
+             // returns a portion of the string, starting at the 
+             // specified index and extending for a given number 
+             // of characters afterwards
+             // index 5 부터 3 개의 단어 출력 (5, 6, 7 ) -> and
+             document.write(a.toUpperCase() + "<br>");
+             // 대문자로 변환 
+             document.write(a.replace("and", "or")+ "<br>");
+             // boys or girls 
+             document.write("   kitae   ".trim() + "<br><hr>"); 
+             //  trim(): 공백제거
+             var sub = a.split(" ");
+             // Boys, and, Girls -> " " 을 기준으로 단어 분리 
+             document.write("a를 빈칸으로 분리<br>");
+             for(var i = 0; i <sub.length; i++) 
+                document.write("sub"+ i+ "="+ sub[i]+"<br>");
+                //sub0 = Boys ...
+
+            document.write("<hr>String 메소드를 실행 후 a와 b 변함 없음<br>");
+            // string에 객체 메소드 활용하여도 본 string은 변하지 않는다 
+            document.write("a : " + a + "<br>");
+            document.write("b : " + b + "<br>");
+         </script>
+     </body>
+ </html>
