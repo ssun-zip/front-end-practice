@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DOM 객체 동적 삽입</title>
+    <script>
+        //만들어 주고 추가로 계속 물어주기
+        // obj 해당 문제의 답은 text 
+        function addAnswer(obj, text){
+                //parent = <div>
+                var parent = obj.parentElement;
+                if(obj != parent.lastElementChild) return;
+                // <p> 생성 
+                var newP = document.createElement("p");
+                // <p> text </p>
+                newP.id = "myp"
+                newP.innerHTML = text;
+                // parent노드에 <p> text </p> 추가하기 
+                parent.appendChild(newP);
+        }
+        function myFunction() {
+            var x = document.getElementById("myp");
+            if(x.style.display == "none"){
+                x.style.display = "block";
+            } else {                
+                x.style.display = "none";
+            }
+        }
+        /*
+            newP.onclick = function() {
+            var par = this.parentElement;
+            par.removeChild(this);
+        }
+        */
+
+    </script>
+</head>
+<body>
+    <h3>정답의 동적 삽입</h3>
+    <div> <p>Q. 거울아 거울아 세상에서 누가 제일 예쁘니? </p>
+        <!-- <button onclick = "myFunction()">답보기</button> -->
+        <button onclick = "addAnswer(this, '백설공주'); myFunction()">답보기</button> 
+    </div>
+    <div> <p>Q. 죽느냐 사느냐 어떤 것이 문제인가? </p>
+        <button onclick = "addAnswer(this, '둘다'); myFunction()">답보기</button>
+    </div>
+</body>
+<!--
+    lastchild vs. lastElementChild
+    : 마지막 자식에 대한 접근이 가능하다.
+    HTML code에 반영을 위한 접근이 필요할 때에는 lastElementChild 쓴다,
+-->
+</html>

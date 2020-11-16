@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script>
+        user = {
+            name : 'admin',
+            email : 'namgarambooks@naver.com',
+            phone : '032-506-3536'
+        };
+        // json 형태의  object인 data 를 alert 나 console.log 할때
+        // alert(data); -> [object objec]
+        // alert(JSON.stringify(data))
+        alert(user);
+        userStr = JSON.stringify(user);
+        //{"name":"admin","email":"namgarambooks@naver.com","phone":"032-506-3536"} 
+        alert(userStr);
+        // [obiect, object]
+        alert(JSON.parse(userStr));
+        // parse (text, 형태)
+        // JSON.parse(userStr) -> [objet, object]
+        // 빈 객체가 있어서 한번 더 쓴다. 
+        JSON.parse(userStr, function(key, value) {
+        //name adminemail namgarambooks@naver.comphone 032-506-3536 [object Object]
+            alert(key + " " + value);
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

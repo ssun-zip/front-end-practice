@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function init() {
+            var emp  = {
+                "name" : "민들레",
+                "age" : "25",
+                "tel" : "111-1111",
+                "address" : "서울"
+            };
+            var msg = "";
+            // msg 에 생성된 객체 정보를 입력 
+            msg += "이름:" + emp.name + "<br>"
+            + "나이:" + emp.age + "<br>"
+            + "전화:" + emp['tel'] + "<br>"
+            + "주소:" + emp['address'] + "<br>"
+            // id = result 에 msg의 string을 적는다 
+            document.getElementById("result").innerHTML = msg;
+        }
+    </script>
+</head>
+<body onload = "init()">
+    <h2>JSON 표기법</h2>
+    <div id = "result"></div>
+</body>
+</html>
