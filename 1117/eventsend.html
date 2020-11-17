@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id = "p"> 마우스를 올려 보세요</p>
+    <button onclick= "f(event)">클릭하세요</button>
+    <script>
+        function f(e){
+            //e는 현재 발생한 이벤트 객체
+            alert(e.type); //이벤트 종류 출력
+        }
+        document.getElementById("p");
+    </script>
+</body>
+</html>
+
+<!--
+    < 이벤트 리스너 작성 방법 4가지 비교 >
+    (1)HTML 태그
+    <p id = "p" onmouseover = "this.style.backgroundColor = 'orchid';">
+        마우스 올리면 orchid색
+    
+    (2) 이벤트 리스너 프로퍼티
+    function over() {
+        p.style.backgroundColor = "orchid";
+    }
+    on.mouseover = over;
+    
+    (3) addEventListener() method 이용
+    p.addEventListener("mouseover", over);
+
+    (4)익명의 함수 이용
+    : 함수 이름 없이 필요한 곳에 함수의 코드를 바로 작성
+    코드가 짧거나 한 곳에서만 사용하는 경우, 익명 함수 편리
+     p.onmouseover = function () {
+         //익명 함수
+         this.style.backgroundColor = "orchid";
+     };
+
+     p.addEventListener("mouseout", function() {
+        this.style.backgroundColor = "white"; //익명 함수
+     });
+
+     이벤트 객체 전달받기
+     :이벤트 객체는 이벤트 리스너 함수의 첫번째 매개변수에 전달
+     1. 이름을 가진 이벤트 리스너
+     function f(e) {
+         //매개변수 e에 이벤트 객체 전달받음
+     }
+     obj.onclick = f ; //obj 객체의 onclick listener함수 f 등록
+
+     2. 악명함수의 경우
+     obj.onclick = function(e) {
+        // 매개변수 e에 이벤트 객체 전달받음
+     }
+
+     3. HTML 태그에 이벤트 리스너 : event란ㄴ 이름으로 전달
+     function(e) {
+         .....
+     }
+     <button onclick = "f(event)">버튼 </button> //event라는 이름으로 이벤트 객체 전달 받음
+     <div onclick = "alert(event.type)">버튼 </div>
+-->

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script>
+        var p;
+        function init() {
+            //문서가 완전히 로드되었을 때 호출
+            p = document.getElementById("p");
+            p.onmouseover = over ; //over()함수를 onmouseover 리스너로 등록
+            //p.addEventListener("mouseover", over)
+            p.onmouseout = out; //out()함수를 onmouseout listener 등록
+            //p.addEventListener("mouseout", out)
+        }
+
+        function over() {
+            p.style.backgroundColor = "orchid";
+        }
+
+        function out() {
+            p.style.backgroundColor = "white";
+        }
+    </script>
+</head>
+<body onload = "init()">
+    <h3> DOM 객체의 이벤트 리스너 프로퍼티에 함수 등록</h3>
+    <p id = "p">마우스 올리면 orchid색으로 변경 </p>
+    <!--
+        addEventListener() method
+        p.addEventListener("mouseover", over); //onmouseover listener로 over() 등록
+        //addEventListener (이벤트 네임, 리스너 [,useCpture])
+    -->
+</body>
+</html>

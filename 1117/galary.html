@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>페이지 제작</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img style = "width : 130px; height: 130px;" src="image/mouse.png">
+            </div>
+            <ul class="sidemenu">
+                <!-- 맨위 상단 오른쪽으로 position된 메뉴바 -->
+               <li><a href="#">Home</a></li> 
+               <li><a href="#">Sitemap</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- //header -->
+    
+	<!-- nav --------------------------------------------- -->
+	<nav>
+		<div class="container">
+			<ul class="leftMenu">
+                <!-- 위 상단의 메뉴바에 대한 내용 -->
+				<li class="active"><a href="index.html">Home</a></li>
+				<li><a href="galary.html">갤러리</a></li>
+				<li class="dropBox">
+                    <a href="board.html">게시판</a> 
+                    <!-- 메뉴를 호버했을때 아래로 내려오는 메뉴 설정 -->
+					<span class="dropmenu"> 
+						<span><a href="#">자유 게시판</a></span> 
+						<span><a href="#">문의 게시판</a></span> 
+						<span><a href="#">건의 게시판</a></span>
+					</span>
+				</li>
+				<li class="dropBox">
+					<a href="">멀티미디어</a> 
+					<span class="dropmenu"> 
+						<span><a href="#">음악듣기</a></span> 
+						<span><a href="#">동영상보기</a></span> 
+					</span>
+				</li>
+				<li><a href="#">상품구매</a></li>
+				<li><a href="#">찾아오시는길</a></li>
+            </ul>
+            <!-- 오른쪽에 회원가입 로그인 기입 -->
+			<ul class="rightMenu">
+				<li><a href="join.html">회원가입</a></li>
+				<li><a href="login.html">로그인</a></li>
+			</ul>
+		</div>
+	</nav>
+	<!-- //nav -->
+	
+	<!-- section3 --------------------------------------------- -->
+    <section id="section3">
+        <div class="container">
+            <h1>갤러리</h1>
+            <div class="box">
+                <!-- 사진과 text가 있는 박스 container 1 -->
+                <div class="image_box">
+                    <img src="image/s1.jpg" alt="" onclick="showDivs(1)">
+                </div>
+                <div class="des">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, nam.
+                </div>
+            </div>
+            <div class="box">
+                <!-- 사진과 text가 있는 박스 container 2 -->
+                <div class="image_box">
+                    <img src="image/s2.jpg" alt="" onclick="showDivs(2)">
+                </div>
+                <div class="des">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, numquam.
+                </div>
+            </div>
+            <div class="box">
+                <!-- 사진과 text가 있는 박스 container 3 -->
+                <div class="image_box">
+                    <img src="image/s3.jpg" alt="" onclick="showDivs(3)">
+                </div>
+                <div class="des">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, fugit!
+                </div>
+            </div>
+            <div class="box">
+                <!-- 사진과 text가 있는 박스 container 4 -->
+                <div class="image_box">
+                    <img src="image/s4.jpg" alt="" onclick="showDivs(4)">
+                </div>
+                <div class="des">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, sequi?
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 사진 container과 footer 부분이 겹치지않도록 세팅 -->
+    <div class="clear"></div>
+    <!-- //section3 -->
+    
+    <div id="back"></div>
+    <div id="popup">
+        <div class="title">SandArt Popup <span class="close" onclick="closePopup()">&times;</span></div>
+         <div align-items = "center" class="large">
+             <!-- 마우스로 사진이 눌러 사진이 팝업되었을때 앞옆으로 photo navigate 가능 -->
+			<div class="small">
+				<img class="mySlides" src="image/s1.jpg">
+				<img class="mySlides" src="image/s2.jpg">
+				<img class="mySlides" src="image/s3.jpg">
+				<img class="mySlides" src="image/s4.jpg">
+                
+                <!-- 사진 양옆으로 navigate -->
+				<a class="leftbtn" onclick="plusDivs(-1)">◀</a>
+				<a class="rightbtn" onclick="plusDivs(1)">▶</a>
+			</div>
+		</div>
+    </div>
+    
+    <!-- footer -->
+    <footer>    
+        <div class="top">
+            <div class="container">
+                <span>다운로드</span>
+                <span>개인정보처리방침</span>
+                <span>저작권지침및신고</span>
+                <span>이메일무단수집거부</span>
+            </div>
+        </div>
+        <div class="container">
+            <strong>
+                Home : Location Log : Tag Log : Media Log : Guestbook : Admin : New Post
+            </strong>
+            <div class="copyright">
+                COPYRIGHT Ⓒ cita's BLOG IS POWERED BY DAUM / DESIGNED BY TISTORY
+            </div>
+        </div>
+    </footer>
+    <!-- //footer -->
+    
+	<script>
+		var slideIndex=0;
+		function plusDivs(n) {
+        //   showDiv애 주어진 n값을 더하여 업데이트
+		  showDivs(slideIndex += n);
+		}
+		function showDivs(n) {
+		  var i;
+          // 현재 슬라이드 인덱스 
+		  slideIndex = n;
+		  var x = document.getElementsByClassName("mySlides");
+          // 인덱스가 사진의 수보다 많아지면 다시 1 (초기화)
+		  if (n > x.length) {slideIndex = 1}    
+          // 첫번째 사진을 왼쪽으로 옮기면 마지막사진으로
+		  if (n < 1) {slideIndex = x.length} ;
+        // 모든 사진을 띠우지 않는다.
+		  for (i = 0; i < x.length; i++) {
+		     x[i].style.display = "none";  
+		  }
+          // 현재 인덱스의 사진만 띠운다 
+		  x[slideIndex-1].style.display = "block";  
+		  document.getElementById("back").style.display = "block";
+		  document.getElementById("popup").style.display = "block"; 
+		} 
+		
+		function closePopup(){
+            // 팝업을 나가면 팝업창을 보이지않게 한다. 
+			document.getElementById("back").style.display = "none";
+		    document.getElementById("popup").style.display = "none";
+		}
+	</script>
+</body>
+</html>

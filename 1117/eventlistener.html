@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <!--
+        event listener 만들기 3가지 방법
+        HTML 태그 내에 작성
+        1. DOM 객체의 이벤트 리스너 프로퍼티에 작성
+        2. DOM 객체의 addEventListener() method 이용
+        3. HTML tag의 엡ㄴ트 리스너 속성에 리스너 코드 직접 작성
+        ex. <p> tag에 마우스 올리면 orchid, 내리면 흰색 배경 변경 
+    -->
+</head>
+<body>
+    <h3>HTML 태그에 리스너 작성</h3>
+    <p onmouseover = "this.style.backgroundColor = 'orchid'"
+        onmouseout = "this.style.backgroundColor = 'white'">
+    마우스 올리면 orchid 색으로 변경 </p>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 객체 프로퍼티</title>
+    <!--
+        이벤트 객체에 들어 있는 정보
+        :현재 발생한 이벤트에 관한 다양한 정보
+         이벤트 객체의 프로퍼티와 메소드로 알 수 있음
+         이벤트의 종류마다 조금씩 다름
+         이벤트 객체의 공통 맴버
+         type : property 현재 발생한 이벤트의 종류를 나타내는 문자열 (click, load등)
+         target : proeprty event를 발생시킨 객체
+         currentTag : property현재 이벤트 리스너를 실핼하고 있는 DOM 객체
+         defaultPrevented: property event의 디폴트 행동이 취소되었는지를 나티내는 true/false값
+         preventDefault() :  method 이벤트의 디폴트 행동을 취소시키는 메소드
+         
+         * 이벤트 타겟과 target 프로퍼티
+         target property: event target 객체 가르킴
+         이벤트 타겟 : 이벤트를 유발시킨 DOM객체
+         <button> 태그의 버튼을 클릭하였으면, 이때 click button의 event target은 버튼
+        -> target과 유사한 것으로 currentTarget 프로퍼티는 이벤트가 흘러가는 경로 상에 있는 
+           DOM 객체 중 현재 이벤트 리스너를 실행하고 있는 DOM 객체를 가리킨다.
+    -->
+</head>
+<body>
+    <h3> 이벤트 객체의 프로퍼티 출력</h3> <hr>
+    <p id = "p"> 버튼을 클릭하면 이벤트 객체를 출력합니다</p>
+    <button onclick = "f(event)">클릭하세요</button>
+    <script>
+        function f(e) {
+            //e는 현재 발생한 이벤트 객체
+            var text = "type: " + e.type + "<br>"
+            + "target: " + e.target + "<br>"
+            + "currentTarget: " + e.currentTarget + "<br>"
+            + "defaultPrevented: " + e.defaultPrevented;
+ 
+            var p = document.getElementById("p");
+            p.innerHTML = text; // 이벤트 객체의 프로퍼티 출력
+        }
+
+
+    </script>
+</body>
+</html>
