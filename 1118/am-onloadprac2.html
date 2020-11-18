@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+</head>
+<script>
+    function changeImage() {
+        var sel = document.getElementById("sel");
+        var img = document.getElementById("myImg");
+        img.onload = function () {  // 이미지 크기 출력
+            var mySpan = document.getElementById("mySpan");
+            mySpan.innerHTML = img.width + "x" + img.height;
+        }
+        var index = sel.selectedIndex; // 선택된 옵션 인덱스
+        img.src = sel.options[index].value; // <option>의 value 속성
+    }
+
+</script>
+<body onload = "changeImage()">
+    <h3> onload 이미지 크기 출력 </h3> <hr>
+    <form>
+        <select id  = "sel" onchange = "changeImage()">
+            <option value = "media/apple.png">사과
+            <option value = "media/banana.png">바나나
+            <option value = "media/mango.png">망고
+        </select>
+
+        <span id = "mySpan">이미지 크기 </span>
+    </form>
+    <p><img id = "myImg" src = "media/apple.png" alt = "."></p>
+</body>
+</html>
+<!--
+    동적으로 이미지 객체 생성 :
+    newImage() : 이미지 객체가 생겼지만 화면에 출력되지 않음 
+    var bananaImg = new Image(); //이미지 객체 생성
+    bananaImg.src = "banana.png"; //이미지 로딩
+
+    로딩된 이미지 출력
+    <img> 태그에 할당된 브라우저 공간에 이미지 출력
+    <img id = "myImg" src = "apple.png" width = "..." height = "..."/>
+    var myImg = document.getElementById("myImg");
+    myImg.src = "banana.png"; //이미지 로딩 지시
+
+-->

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <!--
+        onload window 객체에 발생
+        웹 페이지 로딩 완료시 호출되는 이벤트 리스터
+        <onload 리스너 작성 방법>
+        1. window.onload = "alert('onload')";
+        2. <body onload = "alert('onload')">
+
+        <body>에 onload를 달인 window 객체에 load event가 전달됨
+        * document.onload는 최근에 많은 브라우저에서 작동하지 않음.    
+    -->
+</head>
+<body onload = "alert('이 사이트는 2017년 9월 1일부터 옯겨지게 됩니다.')">
+    <h3>HTML 문서의 로딩 완료, onload</h3>
+    <hr>
+    이 페이지는 onload 리스너의 사용 예를 보여줍니다
+    이 페이지가 출력되고 난 바로 직후 onload 리스너를 통해
+    경고창을 출력합니다
+</body>
+</html>
+<!--
+    [ Image 객체 ]
+    Image 객체는 <img> 태그에 의해 생성된 DOM 객체로서, 
+    new Image() : 자바스크립트 코드에 의해 생성되는 객체
+    onload 이미지의 로딩이 완료되면 Image 객체에 발생하는 이벤트
+
+    새로운 이미지를 로딩하는 방법
+    1. <img id="myImg" src="apple.png" width="..." height="...">
+    2. var myImg = document.getElementById("myImg"); 
+        // myImg는 Image 객체 (<img> 태그를 찾아 Image 객체를 알아낸다)
+    3. myImg.src = "banana.png" 
+        // <img> 태그에 banana.png 이미지 출력 (Image 객체의 src 프로퍼티에 banana.png 파일명을 지정한다.)
+    banana.png 이미지의 로딩이 완료된 myImg 의 onload 리스너 실행
+
+    이미지를 로딩하며 주의할 점 :
+    이미지의 로딩하며 이미지 폭을 알아내는 코드
+    var myImg = document.getElementById("myImg");
+    myImg.src = "banana.png";
+    var width = myImg.width; // 정확한 이미지 폭 알 수 있음.
+    
+    문제점 :
+    myImg.src = "banana.png" ; //실행직후 이미지 로딩 완료되지않음
+    var width = myImg.width; // 이미지 로딩 완료전이며,myImg.width = 0 코드를 수행한다
+    
+    onloadlistener 에서 이미지 폭을 알아내는 코드 작성 : 
+    var myImg = document.getElementById("myImg");
+    myImg.onload = function () // 이미지 로딩 완료 시 실행되는 함수
+    {
+        var width = myImg.width; // 정확한 이미지 폭 알 수 있음.
+    }
+    myImg.src = "banana.png"; // 이미지를 로딩하여 출력하도록 지시
+
+
+-->

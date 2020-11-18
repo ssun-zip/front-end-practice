@@ -1,0 +1,43 @@
+<!--
+    * onblur와 onfocus
+    포커스는 키 입력에 대한 독점권.
+    HTML 요소가 포커스를 받게 될 때 onfocus 리스너가 호출.
+    포커스를 잃는 요소에는 onblur 리스너가 호출.
+
+포커스
+포커스는 현재 키 입력에 대한 독점권
+브라우저는 포커스를 가지고 있는 HTML 태그 요소에 키 공급
+onblur
+포커스를 잃을 때 발생하는 이벤트 리스너
+예) 다른 HTML요소를 클릭하면, 현재 HTML요소는 포커스를 잃는다.
+onfocus
+포커스를 얻을 때 발생하는 이벤트 리스너
+예) 현재 HTML 요소를 클릭하며느 현재 HTML요소가 포커스를 얻는다.
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>onfocus와 onblur</title>
+</head>
+
+<body onload= "document.getElementById('name').focus();">
+    <h3>onfocus와 onblur</h3>
+    <hr>
+    <p>이름을 입력하지 않고 다른 창으로
+    이동할 수 없습니다.</p>
+    <form>
+        이름 <input type="text" id="name" onblur="checkFilled(this)"><p>
+        학번 <input type="text">
+    </form>
+    <script>
+        function checkFilled(obj) {
+            if(obj.value == "") {
+                alert("enter name!");
+                obj.focus(); // obj에 다시 포커스
+            } }
+    </script>
+    </body>
+</html>
