@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>history 객체 활용</title></head>
+<body>
+<h3>history 객체 활용</h3>
+<hr>
+<!--
+    back() // 히스토리에 있는 이전 웹 페이지로 이동. 브라우저의 <back> 버튼과 동일
+    forward() // 히스토리에 있는 다음 웹 페이지로 이동.
+    go(n) // 히스토리에서 현재 웹 페이지에서 n 만큼 상대적인
+        go(-1) -> 이전 페이지로 이동 
+-->
+<button onclick="history.back()">back()</button>
+<!-- 브라우저를 하나 먼저 킨 다음에 위 링크를 복사해서 그 링크로 들어간 후에
+    back()버튼을 누르면 그전 페이지인 해당 페이지로 돌아간다. -->
+<button onclick="history.forward()">forward()</button>
+<button onclick="history.go(-1)">go(-1)</button>
+</body>
+</html>

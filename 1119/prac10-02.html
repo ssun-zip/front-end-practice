@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>윈도우 닫기</title>
+<script>
+var newWin=null; // 새로 연 윈도우 기억
+// window를 열어주는 함수
+function load(URL) {
+    newWin = window.open(URL, "myWin", "left=300,top=300,width=400,height=300");
+}
+// 현재의 window를 닫아주는 function 
+//윈도우를 닫고자 하면 다음 코드를 사용하면 된다. 윈도우가 닫히면 윈도우는 웹 페이지와 함께 사라진다.
+//window.close(); 혹은 self.close();
+
+function closeNewWindow() {
+    if(newWin==null || newWin.closed) // 윈도우가 열리지 않았거나 닫힌 경우
+        return; // 윈도우가 없는 경우 그냥 리턴
+    else
+        newWin.close(); // 열어 놓은 윈도우 닫기
+}
+</script>
+</head>
+<body>
+<h3>window의 close()로 윈도우 닫기</h3>
+<hr>
+<a href="javascript:load('http://www.disneyworld.com')">
+         새 윈도우 열기(디즈니월드)</a><br>
+<a href="javascript:window.close()">
+         현재 윈도우 닫기</a><br>
+<a href="javascript:closeNewWindow()">
+         새 윈도우 닫기</a>
+</body>
+</html>
+ 

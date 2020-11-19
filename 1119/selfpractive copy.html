@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout()/clearTimeout()</title>
+    <style>
+        div {
+            display : inline-block;
+            width : 7em;
+            border : 1px solid gray;
+            background-color : aliceblue;   
+        }
+    </style>
+    <script>
+        var today = new Date();
+        document.write("현재시간 : "+ today.toUTCString() + "<hr>");
+        var datePrint = today.getFullYear() + "년도"+"<br>"+(today.getMonth()+1)+"월"+today.getDate()+"일"
+        +today.getHours()+"시"+today.getMinutes()+"분";
+        document.write(datePrint);
+
+
+        function showClock() {
+        var currentDate=new Date();
+        var divClock=document.getElementById("divClock");
+        // 오후인지 오전인지 구별 
+        var apm=currentDate.getHours();
+        if(apm<12)
+        {
+            apm="오전  ";
+        }
+        else
+        {
+            apm="오후  ";
+        }
+        
+        var msg = apm +(today.getHours()-12)+":";
+        msg += today.getMinutes() + ":";
+        if (today.getSeconds() < 10) {
+            msg += "0" + today.getSeconds();
+        } else {
+            msg += today.getSeconds() + "";
+        }
+        
+        divClock.innerText = msg;
+        // 1초 마다 변경 update
+    }
+    setTimeout(showClock(),1000);
+
+    </script>
+</head>
+<body onload="showClock()">
+    <h3>div 태그에 시계 만들기</h3><hr>
+    <div id="divClock"></div>
+</body>
+</html>
