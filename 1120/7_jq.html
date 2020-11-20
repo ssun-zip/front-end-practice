@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src = "//code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // css 적용 button을 눌렀을 경우 실행 
+            $("button.add").click(function() {
+                // h1, h2, p 에 class = "blue 추가하여 설정
+                $("h1, h2, p").addClass("blue");
+                // "제이쿼리" 문구는 class = "important"
+                $("div").addClass("important");
+            });
+            // css 적용 해제 button을 눌렀을 경우 실행 
+            $("button.remove").click(function() {
+                // button.add헸을때 부여됬던 class를 remove 
+                $("h1, h2, p").removeClass("blue");
+                $("div").removeClass("important");
+            });
+        })
+    </script>
+    <style>
+        .important {
+            font-weight : bold;
+            font-size : xx-large;
+        }
+
+        .blue {
+            color : blue;
+        }
+    </style>
+</head>
+<body>
+    <h1> HTML 5</h1>
+    <h2>CSS3</h2>
+    <p>자바스크립트</p>
+    <div>제이쿼리</div>
+    <button class = "add"> CSS 적용</button>
+    <button class = "remove"> CSS 적용 해제 </button>
+
+</body>
+</html>

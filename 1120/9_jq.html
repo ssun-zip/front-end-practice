@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src = "//code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("button").click(function() {
+                $("p").css({ 
+                    /*
+                        css("propertyname");
+                        -> $("p").css("background-color");
+                        css("propertyname","value");
+                        -> $("p").css("background-color", "yellow");
+
+                        [여러개의 css 설정할때]
+                        css({"propertyname":"value","propertyname":"value",...});
+                        -> $("p").css({"background-color": "yellow", "font-size": "200%"});
+
+                    */
+                        "background-color" : "yellow",
+                        "font-size" : "200%"});
+            });
+        });
+    </script>
+</head>
+<body>
+    <p> 김길동</p>
+    <div>02-123-4567</div>
+    <p> 이길동</p>
+    <div>02-123-4567</div>
+    <p> 이길동</p>
+    <div>02-123-4567</div>
+    <br><br>
+    <button>이름 강조</button>
+
+</body>
+</html>

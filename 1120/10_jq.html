@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src = "//code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var xWidth = 100;
+            var yHeight = 100;
+            $("div").click(function() {
+/*
+.width()는 선택한 요소의 가로 크기를 반환하거나, 가로 크기를 변경합니다.
+class = "div" 에 class = "box"를 추가하여 이값에 xWidth인 가로 크기 반환
+class = "div" 에 class = "box"를 추가하여 이값에 yHeight인 세로 크기 반환
+*/
+                $(this).width(xWidth).addClass("box");
+                $(this).height(yHeight).addClass("box");
+                // 새로 실행될때 마다 -10 씩 가로 세로 크기를 줄여준다 
+                xWidth = xWidth-10;
+                yHeight = yHeight-10;
+            });
+        });
+    </script>
+    <style>
+        div {
+            width : 100px;
+            height : 100px;
+            float : left;
+            margin : 5px;
+            background : yellow;
+        }
+
+        .box {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div>박스1</div>
+    <div>박스2</div>
+    <div>박스3</div>
+    <div>박스4</div>
+    <div>박스5</div>
+</body>
+</html>

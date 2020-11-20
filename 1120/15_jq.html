@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src = "//code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#panel").click(function() {
+                //$(selector).slideUp(speed,easing,callback)
+                // 선택한 요소를 슬라이드 업 (숨기기)
+                $("#panel").slideUp("fast");
+            });
+            $("#slide").click(function() {
+                //선택한 요소를 아래로 슬라이드 (표시) : 5초
+                $("#panel").slideDown(5000);
+            });
+            $("#flip").click(function() {
+                // 선택한 요소에 대해 slideUp () 과 slideDown () 사이를 전환 
+                $("#panel").slideToggle("slow");
+            });
+            $("#stop").click(function() {
+                // .stop() : 현재 동작하고 있는 애니메이션은 즉시 동작이 중단 된다.
+                $("#panel").stop();
+            });
+        })
+        /*
+        jQuery 에서 .animate() 함수를 구현할 때 흔히 만나게 되는 문제가 하나 있다.
+        바로 애니메이션 큐(queue) 이다.
+        $(this).stop().animate
+        -> 다른 종류의 큐(queue)를 중단하고 싶다면 .clearQueue() 함수를 대신 사용해야 한다.
+        */
+    </script>
+    <style>
+        #slide, #panel, #flip {
+            padding : 5px;
+            text-align: center;
+            background-color : #e5eecc;
+            border : solid 1px #c3c3c3;
+        }
+        #panel {
+            padding : 70px;
+            display: none;
+            background-color: #ffff00;
+        }
+    </style>
+</head>
+<body>
+    <div id = "slide">[오늘의 공지사헝]</div>
+    <div id = "panel">오늘은 jQuery 프로그램을 학습합니다. <br>
+        예제를 작성한 후 실행해 보새요.
+    </div>
+    <div id = "flip"> Toggle slide </div>
+
+</body>
+</html>

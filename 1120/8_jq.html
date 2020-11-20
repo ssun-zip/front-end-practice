@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src = "//code.jquery.com/jquery-latest.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("button").click(function() {
+                // toggle : Toggle between hide and show for all text
+                // class = "red" 가 숨겼다 보였다 설정
+                $("h1, h2, p, div").toggle("red");
+            });
+        });
+    </script>
+    <style>
+        .red {
+            color : red;
+            border : 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <h1> HTML 5</h1>
+    <h2>CSS3</h2>
+    <p>자바스크립트</p>
+    <div>제이쿼리</div> <br>
+    <button class = "add"> CSS 적용</button>
+    <button class = "remove"> CSS 적용 해제 </button>
+</body>
+</html>

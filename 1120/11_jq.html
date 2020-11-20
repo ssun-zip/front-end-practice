@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src = "//code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("button.b1").click(function() {
+                // class = "css_pic" 의 img 의 가로크기를 100px로 변경하여 움직임
+                $("img").animate({
+                    width: '100px'
+                });
+            });
+            $("button.b2").click(function() {
+            // class = "css_pic" 의 img 의 가로크기를 200px로 변경하여 움직임                
+                $("img").animate({
+                    width: '200px'
+                });
+            });
+            $("button.b3").click(function() {
+            // class = "css_pic" 의 img 의 가로크기를 300px로 변경하여 움직임
+                $("img").animate({
+                    width: '300px'
+                });
+            });
+        })
+    </script>
+    <style>
+        .css_pic {
+            height : 430px;
+            text-align : center;
+        }
+        .css_pic img {
+            width : 250px;
+        }
+    </style>
+</head>
+<body>
+    <div class = "css_pic">
+        <p>버튼을 누르면 그림의 크기가 바뀝니다. </p>
+        <button class = "b1">가로 100 픽셀</button>
+        <button class = "b2">가로 200 픽셀</button>
+        <button class = "b3">가로 300 픽셀</button>
+        <img name = "pic1" src = "media/pic1.jpg"/>
+    </div>
+</body>
+</html>

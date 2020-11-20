@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <!--
+    <script src="https://code.jquery.com/jquery-3.5.1.js" 
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+            crossorigin="anonymous"></script>    <script>
+    -->
+    <script src = "//code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        // jQuery 문서 준비 이벤트 코드
+        $(document).ready(function() {
+            // Button 선택자가 웹 문서에서 특정요소를 찾아 그요소를 참조하는 제이쿼리 객체 생성
+            $("button").click(function() {
+                // 모든 <p> 요소를 찾아서 감춤
+                $("p").hide();
+            })
+        })
+    </script>
+</head>
+<body>
+    <!-- button click 에 <p> hide 되는 function 수행할 line -->
+    <p> 메세지 : 제이쿼리를 공부하고 있습니다. </p>
+    <button>메세지 삭제</button>
+</body>
+</html>
