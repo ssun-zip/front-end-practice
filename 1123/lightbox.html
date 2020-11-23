@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 
+        플러그인 : 별도의 자바스크림트 파일로 jQuery 에 기능을 추가
+        라이트박스 : 배경은 어둡게 하고 정보가 있는 사각형을 밝게 하는 플로그인
+    -->
+    
+    <!-- 라이트 박스 css js file 입력 -->
+    <link rel = "stylesheet" href = "jquery.lightbox-0.5.css">
+    <script src = "jquery.lightbox-0.5.js"></script>
+    <script src= "//code.jquery.com/jquery-latest.min.js"></script>
+
+    <script>
+        //이벤트를 연결합니다.
+        $(document).ready(function() {
+            $('a.light').lightBox();
+        });
+    </script>
+</head>
+<body>
+    <a class = "light" href = "image/image1.jpg"> LightBox</a>
+    <a class = "light" href = "image/image2.jpg"> LightBox</a>
+    <a class = "light" href = "image/image3.jpg"> LightBox</a>
+</body>
+</html>

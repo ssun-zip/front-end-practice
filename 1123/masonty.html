@@ -1,0 +1,55 @@
+<!--
+     Masonry plugin:
+     타일형 웹 페이지 만들 때 사용
+     1. Mansory plugin 웹 사이트 (http://masonry.desandro.com/) 에서 플러그인 다운로드
+     2. HTML 페이지와 같은 폴더에 넣어 폴더를 구성
+     <script src = "http://masonry.desandro.com/masonry.pkgd.min.js"></script>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        * {
+            margin : 0; padding : 0;
+        }
+        .box {
+            background : black;
+            margin : 5px;
+        }
+    </style>
+    <script src= "//code.jquery.com/jquery-latest.min.js"></script>
+    <script src = "http://masonry.desandro.com/masonry.pkgd.min.js"></script>
+    <script>
+        //이벤트를 연결합니다.
+        $(document).ready(function() {
+            //문서 객체를 생성 합니다.
+            for(var i =0; i < 100; i++){
+                // .appendTo : body 에 <div> 요소를 넣습니다.  
+                // .addClass() : 선택한 요소에 클래스 값을 추가 ; 
+															//페이지가 로드된 상태에서 클래스 값이 추가
+                // <div> 에 box 를 추가하고 style 지정 
+                $('<div></div>').addClass('box').css({
+                    width : 100,
+                    // 다양한 길이의 박스 설정 
+										// backgroundColor: 'purple'
+                    height : Math.floor(Math.random() * 100) + 50
+                    // 새로 랜덤함수로 0-99 +50 을 floor하면 50-149까지 새로가 랜덤 지정이 됨
+                    // 이것은 <div><div> 로 만들고 body에 추가한다.
+                    //math.floor은 매스랜덤이 처음에 0인데 1로 시작하게 해주는 것이다.
+                    //하나안에 여러개 넣어도 된다.
+                }).appendTo ('body');
+            }
+            // Masonry 플러그인을 적용합니다
+            $('body').masonry({
+                // 아이템을 가로 (horizontal-grid)로 align 한다. 
+                // masonry의 넓이를 정해주지 않으면 layout 의 width는 화면의 크기 나타난다. 
+                columnWidth : 110
+            });
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

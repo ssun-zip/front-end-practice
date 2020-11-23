@@ -1,0 +1,623 @@
+﻿<!DOCTYPE html> 
+<html><head> 
+    <title>Roii_meow</title> 
+    <!-- 초기화 -->
+    <style>
+        * {
+            margin: 0; padding: 0;
+            font-family: 'Malgun Gotic', sans-serif;
+        }
+
+        a { text-decoration: none; }
+        img { border: 0; }
+        li { list-style: none; }
+        html { background: #f7f5f5; }
+    </style>
+    <!-- 헤더 -->
+    <style>
+        #main-header {
+            height: 40px;
+            background: #faf7f7;
+            position: relative;
+        }
+
+        .header-search-form {
+            float: left;
+        }
+
+        /* 로고 부분에 대한 스타일 */
+        .header-title {
+            position: absolute;
+            width: 200px; height:  40px;
+            left: 50%; margin-left: -100px;
+            background: url('/image/logo.png');
+            background-repeat: no-repeat;
+
+            text-indent: -9999px;
+        }
+
+        .header-menu {
+            float: right;
+        }
+    </style>
+    <!-- 드롭다운 -->
+    <style>
+        /*  드롭다운 메뉴의 드러난 부분 = outer menu  */
+        .outer-menu {
+            float: left;
+            width: 100px; height: 20px;
+            line-height: 20px;
+            padding: 10px 0;
+            position: relative;
+            text-align: center;
+
+            font-size: 13px;
+            font-weight: bold;
+            /*가장 위로 올라올수 있도록 배치 */
+            z-index: 9999;
+        }
+
+        /* 마우스를 가져갔을때 배경 색 변경  */
+        .outer-menu:hover { background: #E1DFDF; }
+
+        .inner-menu {
+            /* default inner dropdown menu는 보이지 않도록 설정 */
+            display: none;
+            background: #FFFFFF;
+            margin-top: 10px;
+            width: 100%;
+
+            border-top: 1px solid #cccaca;
+            /*dropdown menu box 에 shadow 지정 ㅜ*/
+            box-shadow: 0 2px 4px rgba(34,25,25,0.5);
+        }
+
+        .inner-menu a {
+          /* default inner dropdown menu 보이도록 설정*/
+         display: block;
+            padding: 5px 10px;
+            z-index: 5000;
+        }
+
+        .inner-menu a:hover { background: #E1DFDF; }
+    </style>
+    <!-- 네비게이션 메뉴 -->
+    <!-- follwing, categories, everything, popular, gift -->
+    <style>
+        #main-navigation {
+            height: 30px;
+            background: #faf7f7;
+            border-top: 1px solid #cfcaca;
+            box-shadow: 1px 3px 3px rgba(34, 25, 25, 0.4);
+        }
+
+        #main-navigation > ul {
+            overflow:hidden;
+            text-align: center;
+        }
+
+        #main-navigation > ul > li {
+            display: inline;
+
+            padding: 0 5px;
+
+            line-height: 30px;
+            font-size: 13px;
+            color: #524D4D;
+            text-shadow: 0 1px 1px white;
+        }
+
+        #main-navigation > ul > li:hover { 
+            background: #E1DFDF;
+            border-radius: 2px;
+        }
+    </style>
+    <!-- 검색 양식 -->
+    <style>
+        .header-search-form {
+            height: 26px;
+            padding: 7px;
+        }
+
+        .input-search {
+            display: block;
+            float: left;
+
+            background-color: #FFFFFF;
+            border: 1px solid #CCCCCC;
+            border-radius: 15px 0 0 15px;
+            /* 오른쪽 양끝이 둥글게 생긴 search bar의 디자인 방법  */
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+
+            width: 120px; height: 24px;
+            padding: 0 0 0 10px;
+            font-size: 12px;
+            color: #555555;
+        }
+
+        .input-search:focus {
+            /* color + opacity */
+            border-color: rgba(82, 168, 236, 0.8);
+            outline: 0;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        }
+
+        .input-search-submit {
+            display: block;
+            /* input search 와 submit 을 왼쪽으로 float */
+            float: left;
+
+            width: 50px; height: 26px;
+            border-radius: 0 15px 15px 0;
+            border: 1px solid #CCCCCC;
+
+            margin-left: -1px;
+
+            vertical-align: top;
+            display: inline-block;
+        }
+
+    </style>
+    <!-- content 한개 한개에 대한 css style  -->
+    <style>
+        .paper {
+            width: 190px;
+            margin-top: 10px;
+            padding: 15px 15px 0;
+            font-size: 11px;
+            background: #FFFFFF;
+            box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+        }
+
+        .paper-content {
+            margin: 0 -15px;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #F2F0F0;
+            /*
+            요소의 내용이 너무 커서 지정된 영역에 맞지 않을 때 내용을 자르거나 스크롤 막대를 추가할지 여부
+            visible- 기본. 오버플로가 잘리지 않습니다. 콘텐츠는 요소의 상자 외부에서 렌더링됩니다.
+            hidden -오버플로가 잘리고 나머지 콘텐츠가 보이지 않습니다.
+            scroll -오버플로가 잘리고 나머지 콘텐츠를 볼 수 있도록 스크롤바가 추가됩니다.
+            auto-와 유사 scroll하지만 필요한 경우에만 스크롤바를 추가합니다.
+            */ 
+            overflow: hidden;
+        }
+
+        .paper-description {
+            margin: 10px 0;
+        }
+
+        .paper-link {
+            display: block;
+            float: left;
+        }
+
+        .paper-text {
+            /* 글씨는 모두 왼쪽으로 고정되도록 */
+            float: left;
+            width: 150px;
+            margin-left: 10px;
+        }
+    </style>
+    <!-- 섹션 -->
+    <style>
+        /* 미디어 쿼리를 지원하지 않는 웹 브라우저 */
+        #main-section {
+            width: 920px;
+            margin: 0 auto;
+        }
+
+        /* 3줄 */
+        @media (max-width: 919px) {
+            #main-section { width: 690px; }
+        } 
+
+        /* 4줄 */
+        @media (min-width: 920px) and (max-width:1149px) {
+            #main-section { width: 920px; }
+        } 
+
+        /* 5줄 */
+        @media (min-width:1150px) and (max-width:1379px) {
+            #main-section { width: 1150px; }
+        }
+
+        /* 6줄 */
+        @media (min-width:1380px) {
+            #main-section { width: 1380px; }
+        }
+    </style>
+    <!-- 라이트박스 -->
+    <style>
+        #darken-background {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 100%; 
+
+            display: none;
+            background: rgba(0, 0, 0, 0.9);
+            /* 위에 nav bar z-index :999 보다 높으므로 무조건 가장
+                상위의 자리에 위치한다. */
+            z-index: 10000;
+            overflow-y: scroll;
+        }
+
+        #lightbox {
+            width: 700px;
+            margin: 20px auto; padding: 15px;
+
+            border: 1px solid #333333;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 5px 5px rgba(34, 25, 25, 0.4);
+
+            text-align: center;
+        }
+
+        .user-information {  overflow: hidden;  text-align: left; }
+        .user-information-image { float: left; width: 70px; }
+        .user-information-text { float: right; width: 620px;  }
+        .lightbox-splitter { margin: 10px 0; }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="jquery.masonry.min.js"></script>
+    <script src="jquery.imagesloaded.min.js"></script>
+    <script>
+        // 풀다운 메뉴
+        $(document).ready(function () {
+            // 풀다운 메뉴
+            $('.outer-menu').hover(function () {
+                // 바깥의 메뉴에다가 마우스바를 가져다 댔을때 inner menu 가 나타난다. 
+                $(this).find('.inner-menu').css('display', 'block');
+            }, function () {
+                // 바깥의 메뉴에다가 마우스바를 땠을때 메뉴가가 안보인다. 
+                $(this).find('.inner-menu').css('display', 'none');
+            });
+        });
+
+        // 페이지
+        // masonry : 타일 형식으로 layout 
+        $(document).ready(function () {
+            // 이미지 로드 확인
+            $('#main-section').imagesLoaded(function () {
+                // jQuery Masonry 플러그인 적용
+                $('#main-section').masonry({
+                    itemSelector: '.paper',
+                    columnWidth: 230,
+                    isAnimated: true
+                });
+            });
+});
+          
+        
+        // 라이트 박스
+        // 뒷배경은 검정색이고 사진을 크게 볼수있는 화면 생성 
+        $(document).ready(function () {
+            function showLightBox() {
+                // 라이트박스를 보이게 합니다.
+                $('#darken-background').show();
+                $('#darken-background').css('top', $(window).scrollTop());
+                // 스크롤을 못하게 합니다.
+                $('body').css('overflow', 'hidden');
+            }
+
+            function hideLightBox() {
+                // 라이트박스를 안 보이게 합니다.
+                $('#darken-background').hide();
+
+                // 스크롤을 하게 합니다.
+                $('body').css('overflow', '');
+            }
+
+            // 라이트박스 제거 이벤트
+            $('#darken-background').click(function () {
+                hideLightBox();
+            });
+
+              // 클릭 이벤트 연결
+            $('.paper').click(function () {
+                showLightBox();
+            });
+
+            // 라이트박스 제거 이벤트 보조
+            $('#lightbox').click(function (event) {
+                event.stopPropagation()
+            });
+        });
+    </script>
+</head> 
+<body> 
+    <!-- 헤더 --> 
+    <header id="main-header"> 
+        <div class="header-search-form"> 
+            <form> 
+                <input type="search" class="input-search" /> 
+                <input type="submit" class="input-search-submit" value="검색" /> 
+            </form> 
+        </div> 
+        <h1 class="header-title">Interest</h1> 
+        <div class="header-menu"> 
+            <ul class="outer-menu"> 
+                <li> 
+                    <a href="#">정보</a> 
+                    <ul class="inner-menu"> 
+                        <li><a href="#">데이터</a></li> 
+                        <li><a href="#">데이터</a></li> 
+                        <li><a href="#">데이터</a></li> 
+                        <li><a href="#">데이터</a></li> 
+                        <li><a href="#">데이터</a></li> 
+                        <li><a href="#">데이터</a></li> 
+                    </ul> 
+                </li> 
+            </ul> 
+            <ul class="outer-menu"> 
+                <li> 
+                    <a href="#">사용자</a> 
+                    <ul class="inner-menu"> 
+                        <li><a href="#">데이터</a></li> 
+                        <li><a href="#">데이터</a></li> 
+                        <li><a href="#">데이터</a></li> 
+                        <li><a href="#">데이터</a></li> 
+                    </ul> 
+                </li> 
+            </ul> 
+        </div> 
+    </header> 
+    <!-- 네비게이션 메뉴 --> 
+    <nav id="main-navigation"> 
+        <ul> 
+            <li><a href="#">Following</a></li> 
+            <li><a href="#">Categories</a></li> 
+            <li><a href="#">Everything</a></li> 
+            <li><a href="#">Popular</a></li> 
+            <li><a href="#">Gift</a></li> 
+        </ul> 
+    </nav> 
+    <!-- 본문 영역 --> 
+    <section id="main-section"> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <!-- 메인 사진 -->
+                <a><img width="190" src="image/pic4.png" /></a> 
+            </div> 
+            <!-- 사진 밑의 caption -->
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <!--댓글 창 작은 사진 30 * 30 사이즈 -->
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <!-- 사진 옆 글의 내용 -->
+                <p class="paper-text">귀여운 내 탓인걸까.</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic2.jpg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">우리가 이 땅에서 고양이한테 어떻게 대해주느냐에 따라 천국에서의 위치가 달라진다.</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic3.jpg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">냐아아아아ㅏ오오오오오오 냐오오오ㅗ옹 냐오오오오오ㅗ오오냐오오오오</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic1.jpg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">우리가 이 땅에서 고양이한테 어떻게 대해주느냐에 따라 천국에서의 위치가 달라진다.</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic5.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">양이가 사람의 친구가 되어주는것은 꼭 그래야만 하기 때문이 아니라 그들이 좋아서 그렇게 하는 것이다</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic6.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sem mi, egestas a facilisis eget, egestas ut magna.</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic8.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">냐아아아아ㅏ오오오오오오 냐오오오ㅗ옹 냐오오오오오ㅗ오오냐오오오오</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic10.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sem mi, egestas a facilisis eget, egestas ut magna.</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic11.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">냐아아아아ㅏ오오오오오오 냐오오오ㅗ옹 냐오오오오오ㅗ오오냐오오오오</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic1.jpg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sem mi, egestas a facilisis eget, egestas ut magna.</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic14.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">냐아아아아ㅏ오오오오오오 냐오오오ㅗ옹 냐오오오오오ㅗ오오냐오오오오</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic16.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sem mi, egestas a facilisis eget, egestas ut magna.</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic17.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">냐아아아아ㅏ오오오오오오 냐오오오ㅗ옹 냐오오오오오ㅗ오오냐오오오오</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic18.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sem mi, egestas a facilisis eget, egestas ut magna.</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic19.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">냐아아아아ㅏ오오오오오오 냐오오오ㅗ옹 냐오오오오오ㅗ오오냐오오오오</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic21.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sem mi, egestas a facilisis eget, egestas ut magna.</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic22.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">냐아아아아ㅏ오오오오오오 냐오오오ㅗ옹 냐오오오오오ㅗ오오냐오오오오</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic23.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sem mi, egestas a facilisis eget, egestas ut magna.</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic11.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sem mi, egestas a facilisis eget, egestas ut magna.</p> 
+            </div> 
+        </div> 
+         
+        <div class="paper"> 
+            <div class="paper-holder"> 
+                <a><img width="190" src="image/pic8.jpeg" /></a> 
+            </div> 
+            <p class="paper-description">로이의 오늘의 한마디</p> 
+            <div class="paper-content"> 
+                <a class="paper-link" href="#"><img src="http://placekitten.com/30/30" /></a> 
+                <p class="paper-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sem mi, egestas a facilisis eget, egestas ut magna.</p> 
+            </div> 
+        </div> 
+         
+    </section> 
+    <!-- 라이트박스 실행시 --> 
+    <div id="darken-background">  <!-- 검은 뒷배경-->
+        <div id="lightbox">  <!-- content 자체는 흰색 배경 -->
+            <div class="user-information"> 
+                <img style = "width: 70px;" src="image/pic19.jpeg" /> 
+                </a> 
+                <div class="user-information-text">
+                    <h3>Roii_Meow</h3>
+                    <p>  🐱 2/9/2019 <br>
+                         🇺🇸 Seattle, WA 🛫 🇰🇷 Korea <br>
+                         Hi 👋 I am kitty Roii 😃</p>
+                </div> 
+            </div>
+            <hr class="lightbox-splitter" />
+            <img style = "width: 400px;" src="image/pic10.jpeg" /> 
+        </div> 
+    </div> 
+</body>
+</html> 

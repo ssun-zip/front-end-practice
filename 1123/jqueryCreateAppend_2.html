@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="http://code.jquery.com/jquery-3.1.0.js"></script>
+    <script>
+        //이벤트 연결합니다.
+        $(document).ready(function () {
+            //10회 반복합니다.
+            for(var i = 0; i < 10; i++){
+                //문서 객체를 생성합니다.
+                // *$* 매우 중요합니다. 
+                //$ is a valid function or variable name in Javascript
+                var $dynamic = $('<h1>Create Document Object + ' + i + '<h1>').css({
+                    backgroundColor : 'black',
+                    color : 'red'
+                });
+                //문서 객체를 **추가**합니다.
+                $('body').append($dynamic);
+            }
+        });
+    </script>
+    <!--
+        무한 스크롤 개념 
+        : 스크롤을 맨 아래쪽까지 내려도 무한스크롤을 활용해 정보를  계속 제공
+
+        무한 스크롤 생성 개요
+        1. 스크롤 이벤트가 발생
+        2. 전체 문서의 높이가 스크롤 높이와 웹 브라우저 창의 높이를 더한 값과 같은지 조건 확인
+        3. 이 조건을 충족할 때만 데이터를 추가 
+    -->
+</head>
+<body>
+    
+</body>
+</html>

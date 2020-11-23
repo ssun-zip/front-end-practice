@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.onload = function() {
+            //변수를 선언합니다. 
+            var count = 0;
+            var image = document.getElementById('image');
+            var frames = [ 'image/0.png', 'image/1.png', 'image/2.png', 'image/3.png', 'image/4.png', 'image/5.png',
+            'image/6.png', 'image/7.png', 'image/8.png', 'image/9.png', 'image/10.png', 
+            'image/11.png', 'image/12.png', 'image/13.png', 'image/14.png'];
+            //타이머 반복을 시작합니다.
+            setInterval(function() {
+                // 1- 14까지 다시 1-14까지 프레임 반복 
+                // "media/" + frames[count % frames.length]
+                image.src = frames[count % frames.length];
+                count = count + 1;
+            }, 1000/20); // 500 -> 0.5초 마다
+        }
+    </script>
+</head>
+<body>
+    <img id = "image" />
+</body>
+</html>
+<!--
+    setInterval(함수, 시간) 특정한 시간마다 함수 실행
+    setTimeout(함수, 시간) 특정한 시간 후에 함수 실행 
+    clearInterval(식별번호) setInterval() 함수로 설정한 타이머 제거
+    clearTimeout(식별번호) setTimeout() 함수로 설정한 타이머 제거
+-->
