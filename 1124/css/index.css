@@ -1,0 +1,122 @@
+@charset "utf-8";
+* {
+    font-family: 'Nanum Pen Script', cursive;
+    @import url(https://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+}
+
+
+
+.grid-item img {
+	width: 100%;
+}
+/*  사진 grid 에 대한 스타일  */
+.grid {
+	display : inline-flex;
+	margin-top: 20px;
+	margin-left: 15%;
+	width: 70%;
+}
+
+.grid .grid-col {
+	flex : 1;
+	padding : 0 .1em;
+}
+.container {
+	width: 95%;
+	margin: 0 auto;
+}
+
+.grid-col--2, .grid-col--3 {
+    display: none;
+}
+
+
+.content {
+	position: absolute;
+	background : rgba(0,0,0,.3);
+	margin-top: 20px;
+}
+
+.content h2 {
+	margin : .2em .5em;
+	font-size: 1em;
+	color: white;
+}
+
+.contents h1 {
+	text-align: center;
+	margin-top: 30px;
+
+}
+/* 수동으로 mansory coding  
+	사이즈별로 보인는 이미지 지정 
+	@ 1-767 - 3 개 
+	@ 768 - 4개 
+	@900 - 5개
+
+'*/
+@media (min-width: 768px) {
+    .container { 
+        width: 90%;
+    }
+
+    .grid-col--2 { display: block; }
+    .grid-col {
+        padding: 0 .5em;
+    }
+    img {
+        margin-bottom: .8em;
+    }
+    .content {
+        opacity: 0;
+        transform: translateX(-.5em);
+        transition: all 2s;
+        will-change: opacity, transform;
+    }
+
+    .grid-item:hover {
+        cursor: pointer;
+
+	}
+	
+	.grid-item:hover .content {
+		opacity: 1;
+		transform: translateX(0);		
+	}
+
+}
+
+@media (min-width: 1000px) {
+     .grid-col--2, .grid-col--3 { display: block; }
+    .container {
+        width: 100%;
+    }
+}
+
+/* jumbotron css */
+#banner {
+	border: 3px solid #bfa586;
+	 background-size: cover;
+	 height: 400px;
+	 background-position: 0 0;
+	 margin-left: 15%;
+	 width : 70%;
+	 border-radius: 5px;
+	 margin-top: 20px;
+	 opacity: 0.8;
+	 text-align: center;
+   }
+   #banner h1{
+	color : black;
+	font-size : 50px;
+
+  }
+   
+/* jumbotron 부분의 cat image  */
+   .cat{
+	margin-top : -20px;
+	height: 300px;
+
+   }
+
+
