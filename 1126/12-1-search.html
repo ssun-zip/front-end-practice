@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <!-- 12-1-store 페이지에서 사용자가 세션 스토어리지에 저장한 내역을 
+        불러와 검색할 사람의 학번을 찾는 프로그램 -->
+    <script>
+        function search() {
+            if(!window.sessionStorage) {alert("지원하지 않습니다."); return;}
+            //  사용자가 검색할 이름을 input에 적은것을 받아와 name에 value를 저장합니다.
+            var name = document.getElementById("name").value;
+            // 세션 스토어리지에서 name 키의 값을 가져와서 sid에 저장합니다.
+            var sid = sessionStorage.getItem(name);
+            // 만약 데이터베이스에 존재하지않는 이름 또는 값이 없다면
+            // 학생이 없다는걸 띄우는 alert를 보여줍니다. 
+            if(sid == null){
+                alert(name + " 학생이 없습니다."); return;
+            }
+            // 세션스토어리지에서 받아온 값을 HTML document의 검색된 학번 자리에 
+            // print하여 결과값을 보여줍니다. 
+            document.getElementById("sid").value = sid;
+        }
+    </script>
+</head>
+<body>
+    <h3> 이름으로 학번 검색 </h3> <hr>
+    <from>
+        <label> 검색할 이름 <input id = "name" type="text" size="10"></label> <br>
+        <label> 검색된 학번 <input id = "sid" type="text" size="10"></label> <br>
+        <input type = "button" value  ="스토리지에서 검색" onclick="search()">
+    </from> <br>
+    <!-- 저장될 파일이 같은 페이지에서 열려야 데이터베이스 연동이 가능하다. --> 
+    <a href = "12-1-store.html"> 이름과 학번 저장 페이지로 </a>
+</body>
+</html>

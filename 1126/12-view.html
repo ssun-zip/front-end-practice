@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>나의 단어장 모두 출력</title>
+<style>
+table {
+	background-color : aliceblue;
+}
+span {
+	border : 1px solid yellowgreen;
+	padding-left : 3px;
+	padding-right : 3px;
+}
+td, th {
+	padding-right : 5px;
+}
+</style>
+</head>
+<body>
+<h3>나의 단어장 모두 출력</h3>
+<hr>
+<script>
+/*
+    12.html 에서 로컬 스토리지에 단어들을 입력, 검색을 하는 조작을 한후
+    viewer는 최종적으로 로컬 스토리지에 저장되어있는 정보들을 display해주는 프로그램. 
+*/
+// 로컬스토어리지 지원하는 경우 
+if(window.localStorage) {	
+    // 스토어리지의 단어장 내역에 있는단어와 뜻 값을 볼수있는 뷰어 테이블 생성
+	document.write("<table>");
+	for(i=0; i<localStorage.length; i++) { // 스토어리지의 모든 정보 출력 
+        var key = localStorage.key(i); // 해당 index의 단어 추출 
+        // 해당 index의 key값을가지고 localSotrage에서 value를 불러온다. 
+		var val = localStorage.getItem(key); 
+		document.write("<tr>");
+		document.write("<td><span>" + (i+1) + "</span></td>"); // index
+		document.write("<th>" + key + "</th>"); //단어 
+		document.write("<td>" + val + "</td>"); // 내용 
+		document.write("</tr>");
+	}
+	document.write("</table>");
+}
+else { //로컬 스토리지를 지원하지 않는 브라우저일 경우
+	alert("지원하지 않습니다."); 
+}
+</script>
+</body>
+</html>

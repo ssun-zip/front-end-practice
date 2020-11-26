@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>여행을 갑시다</title>
+        <style>
+            select {
+                margin-left: 20px;
+            }
+            div {
+                display: inline-block;
+                width: 150px;
+                border: 1px solid yellowgreen;
+                padding-left: 10px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <!-- 사용자에게 도시와 음시 선택지를 3가지씩 두고 고르게 한 후
+             선택된 데이터를 로컬 스토리지에 저장합니다. -->
+        <script>
+            function store(key, obj) {
+                if(!window.localStorage) {
+                    alert("지원하지 않습니다.");
+                    return;
+                }
+                // city 라는 이름을 가진 variable에
+                // option의 select된 index의 value값을 들고와 저장한다. 
+                var city = obj.options[obj.selectedIndex].value;
+                // 로컬 스토어리지에 사용자가 선택한 key-city/ food (ex. city-파리)
+                // 그리고 해당 key에 선택된 값을 저장한다.  
+                localStorage.setItem(key, city);
+            }
+        </script>
+    </head>
+    <body>
+        <h3>여행 갑시다</h3><hr>
+        <form>
+            <div>
+                <p>도시를 선택하세요</p>
+                <!-- 선택지가 3개의 select form : 드롭 다운 목록을 작성하는 데 사용
+                     선택되었을때 해당 option의 value를 받아 store() 실행 -->
+                <select size="3" onchange="store('city',this)">
+                <option value="파리">파리</option>
+                <option value="뉴욕">뉴욕</option>
+                <option value="런던">런던</option>
+            </select>
+            </div>
+            <div>
+                <p>음식을 선택하세요</p>
+                <!-- -->
+                <select size="3" onchange="store('food',this)">
+                <option value="햄버거">햄버거</option>
+                <option value="에스프레소 커피">에스프레소 커피</option>
+                <option value="치즈 케익">치즈 케익</option>
+            </select>
+            </div>
+        </form>
+        <a href = "12-5-view.html"> view </a>
+    </body>
+</html>
