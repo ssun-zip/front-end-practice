@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 오늘의 일기쓰기 부분에 memo를 적고 저장을 하게되면 불러온 오늘의 날짜와 
+         메모를 로컬 스토어리지에 저장하고 view 버튼을 누르게 되면
+         새로운 HTML 페이지로 넘어가 정보를 보여준다. -->
+    <script>
+        function store() {
+            if(!window.localStorage) {alert("지원하지 않습니다."); return;} 
+            var date = document.getElementById("date").innerHTML;
+            var memo = document.getElementById("memo").value;
+            // 로컬 스토어리지에 date-memo 의 키와값을 쌍으로 저장한다. 
+            localStorage.setItem(date, memo);
+        }
+        // 보기 버튼을 누르게 되면 새로운 HTML 윈도우가 열리게 된다. 
+        function view() {
+            var win = window.open("12-4-view.html", "viewwin");
+        }
+        // 현재 date를 생성해 html파일에 적어준다. 
+        function printDate() {
+            // <span>의 id = date자리
+            var span = document.getElementById("date");
+            // date object 불러오기 -> 브라우저의 시간대를 사용하고 날짜를 전체 텍스트 문자열로 표시 
+            var today = new Date();
+            // format -> YYYY.MM.DD
+            var str = today.getFullYear() + " . " 
+                        + (today.getMonth() + 1) + " . "
+                        + today.getDate();
+            // 위에서 str에 담은 날짜에 대한 정보를 variable span안에 넣어준다. 
+            // <span id = "date"> str정보 </span>
+            span.innerHTML = str;
+        }
+    </script>
+    <style>
+        textarea {
+            font-size : 1.1em;
+        }
+    </style>
+</head>
+<!-- body 요소에 속성으로 지정될 수 있다.  
+     onload 이벤트는 객체가로드되었을 때 발생 
+     웹 페이지가 모든 콘텐츠 (이미지, 스크립트 파일, CSS 파일 등)를 완전히로드 한 후
+     스크립트를 실행하기 위해 <body> 요소 내에서 가장 자주 사용
+--> 
+<body onload = "printDate();">
+    <h3> 일기 쓰기 </h3> <hr>
+    <form>
+        <div>오늘 <span id  = "date"></span></div>
+        <textarea id = "memo" cols = "50" rows = "10"></textarea>
+        <br>
+        <input type = "button" value = "저장" onclick="store()">
+        <input type = "button" value = "보기" onclick="view()">
+    </form>
+</body>
+</html>

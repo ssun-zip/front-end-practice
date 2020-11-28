@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>단어장 만들기</title>
+<script>
+// 사용자가 저장하고 싶은 영어 한글 단어의 쌍을 입력한 후 단어저장 버튼을 누르면 실행
+// 로컬 스토리지에 해당 단어가 키-벨류 값으로 저장된다. 
+function store() {
+    // 로컬 스토리지를 지원하지 않는 브라우저의 경우 alert	
+	if(!window.localStorage) {
+		alert("지원하지 않습니다."); return;
+	}
+	var engWord = document.getElementById("eng").value; // 영어 단어 text 
+	engWord = engWord.trim(); // 문자열의 양쪽 공백을 제거합니다. 
+	var korWord = document.getElementById("kor").value; // 한글 단어 뜻 
+	korWord = korWord.trim(); // 양쪽 공백 제거 
+	
+    // 단어가 이미 있는지 확인
+    // 로컬 스토리지에 해당 영어단어의 단어가 있는지 찾아낸다.
+	if(localStorage.getItem(engWord) != null) {
+        // confirm() 은 확인 및 취소 버튼과 함께 지정된 메세지가 있는 상자 표시합니다. 
+        // alert과 비슷한 팝업창 
+		var ret = confirm(engWord + "가 이미 있습니다. 수정하시겠습니까?");
+		if(ret == false) // 수정을 원치 않으면 그냥 리턴
+			return;
+	}
+
+    // 로컬 스토리지에 저장(혹은 수정)
+    // 영어 (key) -한글 (value) 쌍으로 저장 
+	var ret = localStorage.setItem(engWord, korWord);
+	
+	// 저장 후 <input>에 입력된 단어 지우기
+	document.getElementById("eng").value = "";
+	document.getElementById("kor").value = "";
+}
+
+// 사용자가 찾고 싶은 영어단어를 text로 기입한후 영단어 검색 버튼을 누르게 되면 실행
+// 로컬 스토리지에 해당 영어단어가 있는지를 탐색해 존재한다면 한글뜻 (value)를 
+// input text field에 display해 줍니다. 
+// 로컬 스토리지에 입력한 영어단어 대한 value가 존재하지 않는다면 단어가없다는 alert를 띄우고
+// 화면에 아무것도 display하지 않는다. 
+function search() {
+	if(!window.localStorage) {
+		alert("지원하지 않습니다."); 
+		return;
+	}
+	var engWord = document.getElementById("eng").value; // text에 적힌 영어단어 
+	if(engWord == "")
+		return; // 입력된 것이 없음
+		
+    engWord = engWord.trim(); // 앞 뒤 빈칸 삭제
+    // 로컬 스토리지에서 해당 영어단어의 key를 가지고 있는 한글 value를 불러옵니다. 
+    var korWord = localStorage.getItem(engWord);
+    // 단어장에 해당 단어가 없는 경우 
+	if(korWord == null) {  
+		alert(engWord + "는 없는 단어입니다.");
+		document.getElementById("kor").value = "";
+		return;		
+	}
+    // input textfield의 한글 단어를 적는 자리에 불러온 해당 영어단어의 value를 print
+    // input 태그 text타입은 그 입력창에 입력된 값이 value라는 속성에 들어가기때문에
+    // kore input 태그의 value (입력값) = korWord (변수)러 설정한다. 
+    var korObj = document.getElementById("kor");
+	korObj.value = korWord;
+}
+/*
+    사용자가 단어장에서 지우고 싶은 영어 단어를 입력하게 되면 해당 key와 value값을 
+    지우며 단어를 삭제한다. 로컬 스토리지에서 지워진 이후에는 
+    해당 단어를 적은 text field는 지워지고
+    한글 단어가 적혀야 하는 칸에 단어가 삭제됬다는 내용이 뜬다. 
+    만약 해당 단어가 단어장에 존재하지않을 경우에는 alert를 띠운다. 
+*/
+function remove() {
+	if(!window.localStorage) {
+		alert("지원하지 않습니다.");  return;
+    }
+	var engWord = document.getElementById("eng").value;
+	if(engWord == "")
+		return; // 입력된 것이 없음 
+
+	// 단어가 있는지 확인
+    engWord = engWord.trim(); // 앞 뒤 빈칸 삭제
+    // 해당 단어가 없는 경우 
+	if(localStorage.getItem(engWord) == null) {
+		alert(engWord + "가 없습니다."); return;
+	}
+		
+	// 단어 삭제
+	var korWord = localStorage.removeItem(engWord);
+	
+	// 사용자 입력 칸 지우기
+	document.getElementById("eng").value = ""; 
+	document.getElementById("kor").value = engWord + " 삭제됨";
+}
+
+// 사용자가 저장한 영어-한국어 단어 리스트에 대한 정보를 모두 확인할수 있는 viewer
+// 전체보기 버튼을 누르게되면 새로운 창이 뜨게 된다. 
+function viewAll() {
+	var win = window.open("12-view.html", "viewwin");
+}
+</script>
+</head>
+<body>
+<h3>나의 단어장 만들기</h3>
+<hr>
+<!-- 
+     나의 단어장 프로그램은 사용자가 로컬 스토리지에 저장한 데이터 또는 
+     넣을 데이터 베이스를 조작하는 기능을한다. 
+     제공하는 서비스 : 
+     1. 단어 저장 : 단어의 영어-한글 쌍을 text로 기입하고 단어 저장을 하게되면 local Storage에 저장
+     2. 영단어 검색 : 영어 text를 기입하면 로컬 스토리지에서 해당 key의 value를 찾아 한글뜻을 return
+     3. 단어 삭제 : 삭제하고 싶은 단어를 기입하면 해당 key를 찾아 삭제한다. 
+     4. 전체보기 : 12-view 로 redirect하여 새로운 HTML 페이지에서 로컬 스토리지에 저장된 모든 정보가
+                적힌 뷰어를 제공해준다.  
+ -->
+<form>
+	<label>영어 <input id="eng" type="text" size="20"></label><br> 
+	<label>한글 <input id="kor" type="text" size="20"></label><br>
+	<br>
+	<input type="button" value="단어 저장" onclick="store()"> 
+	<input type="button" value="영단어 검색" onclick="search()">
+	<input type="button" value="단어 삭제" onclick="remove()">
+	<input type="button" value="전체 보기" onclick="viewAll()">
+</form>
+</body>
+</html>

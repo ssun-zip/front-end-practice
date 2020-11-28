@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        link를 넣지 않더라도 같은 페이지 상에서 url로 store후 search를 들어가면
+        같은 세션 스토어리지를 공유할 수 있다. 
+        그러므로 같은 스토어리지를 공유하여 아이템을 검색하고 저장이 가능하다. 
+    -->
+    <h3>세션 스토리지에 구입 리스트 검색</h3> <hr>
+    품목명 : <input id = "item" type="text" size = "10">
+    개수 : <input id  = "count" type="text" size="10">
+    <button id = "retrieve" onclick = "retrieve()"> 검색 </button>
+    <script>
+        var item = document.getElementById("item"); // 품목명에 적힌 text를 받아온다
+        var count = document.getElementById("count"); // 개수에 적힌 text를 받아온다 = "";
+
+        // 품목명에 검색할 정보를 기입하면 세션 스토어리지에 해당 품목명을 가진 데이터의
+        // 키와 값을 쌍을 찾아 개수를 알려준다.
+        // 만약 해당 키의 값이 존재하지않는다면 그에대한 정보도 알려준다. 
+        function retrieve() {
+            if(!window.sessionStorage) {
+                alert("세션 스토리지를 지원하지 않습니다."); return;
+            }
+            // 세션 스토어리지에서 item (키)에 대한 value(값)을 찾아 variable val
+            // 에 저장시켜준다. 
+            var val = sessionStorage.getItem(item.value);
+            // 만약 사용자가 입력한 품목명이 존재하지않는다면 alert를 띄운다.
+            if(val == null){
+                alert(item.value + "는 구입 리스트에 없습니다.");
+            } else {
+                // 세션 스토어리지에서 받아온 키에 대한 값을 count에 넣어준다.
+                // count는 html에서 id = "count"인 text에 찾은 데이터에 대한 
+                // 값을 적어준다. 
+                count.value = val;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시작과 끝 숫자를 전달받아 합을 구하는 워커 태스크</title>
+</head>
+<body>
+    <!-- 
+        워커 태스크 스스로 종료 : 
+        - close(): 워커 객체가 워커 테스크를 강제 종료
+        - terminate() : 워커 테스크가 종료하면 워커 객체는 더이상 워커 테스크와 
+                        message event를 주고받을수 없다
+            ex. addWorker.terminate();
+    -->
+    <!-- html 파일에서 시작과 끝 숫자를 전달받아
+         워커테스트로 보내 합을 생성하여 다시 불러와 전달받은 값을 출력한다. -->
+    <h3> 시작과 끝 숫자를 전달받아 합을 구하는 워커 태스크 </h3> <hr>
+    <input id = "from" type="text" size="10"> ~
+    <input id = "to" type="text" size="10"> =
+    <input id = "sum" type="text" size="10"> 
+    <button id = "add" onclick="send()"> add</button>
+    <script>
+        var addWorker = new Worker("add.js"); //워커 태스크 생성
+        //워커 태스크에 시작 숫자와 끝 숫자 전송
+        function send() {
+            var parameter = { //시작 숫자와 끝 숫자로 구성된 객체
+                from: document.getElementById("from").value, // from = "from".value
+                to: document.getElementById("to").value
+            };
+            //시작 숫자와 끝 숫자를 담은 객체를 워커 태스크로 전송
+            addWorker.postMessage(parameter);
+        }
+
+        //워커 태스크로부터 결과를 기다리는 리스너 등록
+        // add.java 의  onmessage로부터 from에서 to 까지의 합의 정보를 받는다. 
+        addWorker.onmessage = function(e) {
+            //워커 태스크로부터 전달받은 합 출력
+            document.getElementById("sum").value = e.data;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+* {
+    text-align : center;
+    /*글씨체 변경*/
+    @import url(https://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+header {
+    border : 1px solid rgb(255, 200, 98);
+    background-color: rgb(255, 200, 98);
+    font-size: 18px;
+}
+
+section {
+    border : 2px solid rgb(252, 188, 198);
+    font-size: 18px;
+    background-color: rgb(252, 188, 198);
+
+}
+
+footer {
+    background-color: orchid;
+    border : 1px solid orchid;
+}

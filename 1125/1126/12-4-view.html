@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>일기 보기</title>
+    <style>
+        table {
+            background-color: aliceblue;
+        }
+        span {
+            border: 1px solid yellowgreen;
+            padding-right: 3px;
+            padding-left: 3px;
+        }
+        td, th {
+            padding-right: 5px;
+            border-bottom: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <!-- 12-4.store에서 저장된 date과 메모가 담겨있는 local storage를 공유하여
+         데이터에 대한 모든 key-value를 쌍으로 테이블 형식으로 그날의 일기를 display-->
+    <h3> 일기 보기 </h3><hr>
+    <script>
+        if(window.localStorage){
+            document.write("<table>");
+            for(i = 0; i < localStorage.length; i++){
+                var key = localStorage.key(i);
+                var val = localStorage.getItem(key);
+                document.write("<tr>");
+                document.write("<td><span>" + (i+1) + "</span></td>");
+                document.write("<th>" + key + "</th>");
+                document.write("<td>" + val + "</td>");
+                document.write("</tr>");
+            }
+            document.write("</table>")
+        } else {
+            alert("지원하지 않습니다.");
+        }
+    </script>
+</body>
+</html>

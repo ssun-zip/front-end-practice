@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 포스트잇에 입력한 제목과 메모를 로컬 스토어리지에 저장하고 
+         저장된 내용을 보여주는 프로그램-->
+    <script>
+        // 제목과 메모를 입력하고 저장을 누르게 되면 해당 내용을 로컬 스토어리지에 저장
+        function store() {
+            if(!window.localStorage) {alert("지원하지 않습니다."); return;}
+            var title = document.getElementById("title").value;
+            var memo = document.getElementById("memo").value;
+            // text로 적은 title 과 memo의 vale를 받아 로컬 스토어리지에 
+            // key-value 쌍으로 저장한다. 
+            localStorage.setItem(title, memo);
+        }
+        // 보기를 누르게 되면 포스트잇 출력이되있는 viewwin이라는 이름을 가진 html 페이지가 열린다.
+        function view() {
+            var win = window.open("13-3-view.html", "viewwin");
+        /* var win = window.open(url, name, specs, replace);
+            - name: 새로 열릴 창의 속성 또는 창의 이름   
+                    _blank, _parent, _self, _top, name(임의의 이름)
+        */
+
+
+        }
+    </script>
+</head>
+<body>
+    <h3> 포스트잇 </h3> <hr>
+    <form>
+        <label> 제목 <input id = "title" type = "text" size ="20"></label> <br>
+        <label> 메모입력 <br>
+            <textarea id = "memo" col = "30" rows ="5"></textarea>
+        </label>
+        <br>
+        <input type = "button" value = "저장" onclick = "store()">
+        <!--view()는 정보가 담겨있는 새로운 HTML 페이지로 redirect -->
+        <input type = "button" value = "보기" onclick = "view()">
+    </form>
+</body>
+</html>
