@@ -1,0 +1,9 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<studentinfo xmls = "http://www.good.ac.kr/2014/xmls/student">
+    <student sno = "001">
+        <major> 컴퓨터 학과 </major>
+        <name> 홍길동 </name>
+        <age> 25세 </age>
+        <gender> 남 </gender>
+    </student>
+</studentinfo>

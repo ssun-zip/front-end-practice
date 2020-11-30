@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "euc-kr" ?>
+<!-- 문서를 표준화를 위한 DTD-->
+<!DOCTYPE booklist SYSTEM "ch01-03.dtd">
+
+<!-- 출력 형태를 표현해주는 XSL-->
+<?xml-stylesheet type = "text/xsl" href = "ch01-03.xsl"?>
+
+<!-- BODY-->
+<제품정보>
+    <과일 종류 = "배">
+        <생산지역> 나주시 </생산지역>
+        <수량> 1 </수량>
+        <가격> 56000 </가격>
+    </과일>
+</제품정보>
+
+<?xml version = "1.0" encoding = "euc-kr" ?>
+<!-- 잘된 XML 문서 입니다. -->
+<text>
+    <and> <![CDATA[YOU & ME]]> </and>
+</test>
+
+
+
+

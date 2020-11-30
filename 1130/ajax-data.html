@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <!-- 연동파일
+        ajax-xml.js  -> ajax-stuinfo.xml
+        ajax-json.js
+        ajax-html.js -> ajax-weather.xml
+    -->
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>jQuery</title> 
+        <!-- 제이쿼리 모바일, 제이쿼리 라이브러리 파일 선선 -->
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css">
+        <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+        <!-- 사용자 정의 자바스크립트 파일 선언 -->
+        <script src="ajax-xml.js"></script>
+        <script src="ajax-json.js"></script>
+        <script src="ajax-html.js"></script>
+    </head>
+    <body>
+        <div data-role="page">
+            <div data-role="header" data-position="fixed">
+                <h1>Ajax 활용</h1>
+            </div>
+            <div data-role="content">
+                <!-- ajax-xml.js-->
+                <button id="btnLoad1" data-inline="true">XML</button>
+                <!-- ajax-json.js-->
+                <button id="btnLoad2" data-inline="true">JSON</button>
+                <!-- ajax-html.js-->
+                <button id="btnLoad3" data-inline="true">HTML</button>
+                <ul data-role="listview" id="listArea" data-inset="true">
+                    <li id="item">데이터 로드 하기 전 ...</li>
+
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <h4>꼬리말</h4>
+            </div>
+        </div>
+    </body>
+</html>
+
+<!-- $.onload() // 메소드  
+     function(data) :요청 성공 콜백 함수 (data:서버 반환 값)
+     data : 서버로 전달되는 요청 내용(제이쿼리 객체맵이나 문자열)
+     url : 요청이 보내질 (주로 서버)의 URL 주소 (필수 항목, 기본값: 현재페이지)
+     ex. "ajax-html.js"
+     $(document).ready( function() {
+         $('#btnLoad3').click(function() {
+             $('#listArea').load('ajax-listinfo.html li', function(htmlData) {
+                 $('#listArea').listview('refresh');
+            });
+        });
+    });
+    
+    ** ajax-listinfo.html **
+    <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body>
+            <ul>
+                <li>봄</li>
+                <li>여름</li>
+                <li>가을</li>
+                <li>겨울</li>
+            </ul>
+            
+        </body>
+        </html>
+-->

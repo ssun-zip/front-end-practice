@@ -1,0 +1,18 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<deptinfo>
+    <department>
+        <dno> 001 </dno>
+        <name> 컴퓨터공학과 </name>
+        <professor> 박인후 </professor>
+        <student>
+            <sno> 001" </sno>
+            <name> 홍길동 </name>
+            <age> 25세 </age>
+        </student>
+    </department>
+    <department dno = "002" name = "철학과" professor = "박현우">
+        <student sno = "0021" name = "홍리라" age = "21세"> </student>
+        <student sno = "0022" name = "김미선" age = "22세"> </student>
+    </department>
+</deptinfo>
+

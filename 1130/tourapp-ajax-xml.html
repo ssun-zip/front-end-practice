@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+            <!-- 제이쿼리 모바일, 제이쿼리 라이브러리 파일 선선 -->
+            <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css">
+            <!--제이쿼리 모바일css파일 불러오기-->
+            <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+            <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+        <script>
+            var count=0;   //전체 레코드 개수를 위한 전역 변수
+            var Doc;       //XML 문서 DOM 복합 객체 참조를 위한 전역 변수
+            $(document).ready( function() {
+                //ajax method의 기본이 되는 메소드
+                // 서버와 비동기 http 통신을 하기 위한 기술
+                $.ajax({
+                    // tour1.xml file 의 data 이용
+                    url: 'tour1.xml', //url: 'tour2.xml',
+                    // 요청을 위해 사용할 HTTP method (defualt)
+                    type: 'get',
+                    // xml 데이터 형식 
+                    dataType: 'xml',
+                    // 응답 제한 시간 (milisecond)
+                    timeout: 1000,
+                    // 성공 콜백 함수 - (data: 서버반환값)
+                    success: function(xmlDoc) {
+                        // 서버 반환값을 doctype 으로 지정
+                        Doc=xmlDoc;
+                        // attraction의 개수 tracking - 장소의 개수 
+                        count = $(xmlDoc).find('attraction').size();
+                        displayTour();
+                    },
+                    // 요청 싫패 콜백 함수 
+                    error: function() {
+                        $('body').html('<div>Error!!</div>');
+                    }
+                });
+            });
+        
+            //관광지 정보를 리스트뷰로 표시
+            function displayTour() {
+                var i, 
+                tagList='', country='', name='', location='';
+                tagList = '<li data-role="list-divider">관광지 목록</li>';
+                  if(count > 0) {
+                      // attraction의 개수 만큼 리스트 생성
+                      for( i = 0; i < count; i+= 1) {
+                        // xmlDoc 안의 <attraction> 찾아 그안의 정보들을 저장한다. 
+                        $record = $(Doc).find('attraction').eq(i);
+                        // 사진을 불러온다. 
+                        tagList += '<li><a href="#"><img src="' + $record.find('picture').text() + '">';
+                        // 나라 이름 불러오기
+                        tagList += '<p class="ui-li-aside">' + $record.attr('country') + '</p>';
+                        // 장소이름 불러오기
+                        tagList += '<h2>' + $record.find('name').text() + '</h2>';
+                        // 도시 위치 불러오기 
+                        tagList += '<p>지역 : ' + $record.find('location').text() + '</p></a></li>';
+        
+                      }
+                  }
+                  // html file tagList에 tagList에 저장된 내용을 반환한다. 
+                  // <ul data-role = "listview" id = "attractionListArea" data-divider-theme = "b">
+                  $('#attractionListArea').html(tagList);
+                 // refresh is only used when you added items to a listview and want to refresh the listview widget.
+                 // listview에 새로운 item들이 저장되었다면 refresh 해준다. 
+                  $('#attractionListArea').listview('refresh');
+            }
+        </script>
+</head>
+<body>
+    <div data-role ="page">
+        <div data-role = "header">
+            <h1>세계 유명 관광지 안내</h1>
+        </div>
+        <div data-role = "content">
+            <ul data-role = "listview" id = "attractionListArea" data-divider-theme = "b">
+            </ul>
+        </div>
+        <div data-role = "footer">
+            <h4>월드 관광</h4>
+        </div>
+    </div>
+</body>
+</html>

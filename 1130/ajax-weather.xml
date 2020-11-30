@@ -1,0 +1,15 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<weatherinfo>
+    <weather>
+        <indweather> 봄 </indweather>
+    </weather>
+    <weather>
+        <indweather> 여름 </indweather>
+    </weather>
+    <weather>
+        <indweather> 가을 </indweather>
+    </weather>
+    <weather>
+        <indweather> 겨울 </indweather>
+    </weather>
+</weatherinfo>

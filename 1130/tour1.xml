@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "euc-kr" ?>
+<!-- tour1.xml-->
+<attractionlist xmlns = "http://www.hk.ac.kr/2014/xmlns/tour">
+    <attraction country = "미국">
+        <name>  자유의 여신상 </name>
+        <location> 뉴욕 </location>
+        <picture> pic1.png </picture>
+    </attraction>
+        <attraction country = "그리스">
+        <name>  산토리니 </name>
+        <location> 그리스 </location>
+        <picture> pic2.png </picture>
+    </attraction>
+        <attraction country = "미국">
+        <name>  에펠탑 </name>
+        <location> 파리 </location>
+        <picture> pic3.png </picture>
+    </attraction>
+        <attraction country = "미국">
+        <name>  파라다이스 아일랜드 </name>
+        <location> 바하마 </location>
+        <picture> pic4.png </picture>
+    </attraction>
+</attractionlist>

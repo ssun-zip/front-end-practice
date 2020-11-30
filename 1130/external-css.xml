@@ -1,0 +1,87 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+ <?xml-stylesheet type = "text/css" href = "dept.css"?>
+ <deptinfo>
+    <department dno = "001">
+        <name> 컴퓨터공학과 </name>
+        <professor> 박인후 </professor>
+        <student sno ="001">
+            <sname> 홍길동 </sname>
+            <aage>25세 </aage>
+        </student>
+    </department>
+    <department dno = "002">
+        <name> 철학과 </name>
+        <professor> 박현우 </professor>
+        <student sno ="021">
+            <sname> 홍리라 </sname>
+            <age>21세 </age>
+        </student>  
+        <student sno ="022">
+            <sname> 김미선 </sname>
+            <age>22세 </age>
+        </student> 
+    </department>
+</deptinfo>
+
+<!-- 제이쿼리는 웹 브라우저 종류에 상관없이 같은 방식으로 Ajax기능을 구현하도록 다양한 메소드를 제공
+제이쿼리 모바일은 페이지 이동을 위해 ajax 기술을 사용
+ajax(asynchronous javascript and xml)
+: 서버와 비동기 http 통신을 하기 위한 기술
+서버에 http 요청을 보낸 뒤 xml, json형식등으로 응답을 받아 페이지의 일부만을 변경 매번
+html5 페이지 전체를 새로 고침 하지않고도 웹 페이지 내용을 새롭게 갱신 가능
+-> 페이지 이동 없이 웺 서버와 데이터를 주고 받는 사용자 상호 작용의
+새페러다임 제공
+빠르고 동적인 웹 페이지 생성을 위한 핵심 기술로 브라우저나 플랫폼에 독립적임
+
+** ajax method:
+$.ajax()
+모든 ajax method의 기본이 되는 메소드
+ex. $.ajax ({
+        url : 'service.php',
+        success: function(data) {
+            $('#area').html(data);
+        }
+    });
+
+$.get() : GET 방식의 ajax() method
+ex. $.get('sample.html', function(data) {
+    $('#area').html(data);
+});
+
+$.getJSON() : JSON 형식으로 응답 받는 ajax() method 
+ex. $.getJSON('sample.json', function(data) {
+    $('#area').html('<p>' + data.age + '</p>'); 
+});
+
+$.ajax() method 
+: 모든 ajax 메소드가 내부적으로 사용하는 기본 메소드 ajax요펑을 기본적인 부분부터 직접 설정하고 제어할 수 있어 
+다른 ajax 메소드로 할 수 없는 요청도 수행 가능
+
+$.ajax() 메소드의 기본 형식
+$.ajax({url : url 주소 [,type: 요청방식] [,data: 요청 내용]
+    [,timeout : 응답제한시간]  [,dataType : 응답데이터 유형]  [,async : 비동기여부]  
+     [,success : 성공콜백 함수]  [,error : 실패콜백함수]
+});
+
+선택항목 : 항목 값
+ajax() mathod 선택 항목들 (option)을 앱 형식으로 명세
+$.ajax(option);
+url : URL 주소
+요청이 보내질 (주로 서버)의 URL 주소 (필수 항목, 기본값: 현재 페이지)
+ex. "sample.php", "sample.html", "sample.xml"
+type: 요청방식 
+요청을 위해 사용할 HTTP method
+ex. get(기본값), "post"
+data:요청 내용 
+서버로 전달되는 요처 내용 (제이쿼리 객체맵이나 문자열 )
+timeout : 응답제한시간
+요청 응답 제한 시간(밀리초)
+예) 20000
+dataType : 응답데이터 유형
+예) "xml","html","json","jsonp","script","text"
+Async : 논리값
+요청이 비동기식으로 처리되는지 여부(기본값 : true)
+success : function(data)
+요청 성공 콜백함수(data: 서버반환값)
+error : function()
+요청실패 콜백함수-->
