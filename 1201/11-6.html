@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0. user-scalable=no">
+    <title>Book Retrieval</title>
+    <style>
+        h3 {margin-left: 100px;}
+        table{ border-style: ridge; border-width:4px; width: 370px;}
+        td {background-color: silver; width : 100px;}
+        .u_col1{width:100px;}
+        .u_col2 *{width:250px;}
+        .u_center {text-align: center;}
+    </style>
+    <script src = "http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script type = "text/javascript">
+        var count = 0, length  = 0; // 레코드 번호, 전체 레코드 개수를 위한 전역 변수
+        var Doc; //XML 문서 DOM 복합 개체 참조를 위한 전역 변수
+        $(document).ready(function() {
+            // ajax 기본 메소드
+            $.ajax({
+                // 주소 요청이 보내질 URL 주소
+                url: "book.xml",
+                // HTTP 요청 방식 (default)
+                type: "get",
+                // 응답 데이터 유형
+                dataType: "xml",
+                // 응답 제한 시간
+                timeout: 1000,
+                // 요펑 성공 콜백 함수 (서버 반환값 - xmlDoc)
+                success: function(xmlDoc){
+                    Doc = xmlDoc; //전역 변수 초기화 
+                    // 책의 개수 만큼을 length 로 지정 
+                    length = $(xmlDoc).find("book").size();
+                    display(); //첫번쨰 도서 정보를 표시
+                },
+                // 요청 실패 콜백 함수 - 화면에 에러 띠우기
+                error: function() {
+                    $("body").html("<div> Error !! </div>"); 
+                }
+            });
+            // 다음 버튼을 눌렀을 경우 실행 
+            $("input[name='btnNext']").click(function() {
+                if(count < length-1){
+                    count = count + 1;
+                    display();
+                }
+            });
+            // 이전 버튼을 눌렀을 경우 실행
+            $("input[name='btnPrevious']").click(function() {
+                if(count > 0){
+                    count = count - 1;
+                    display();
+                }
+            });
+            //처음 버튼을 눌렀을 경우 실행 
+            $("input[name='btnFirst']").click(function() {
+                count = 0;
+                display();
+            });  
+            // 마지막 버튼을 눌렀을 경우 실행
+            $("input[name='btnLast']").click(function() {
+                count = length-1;
+                display();
+            });     
+            //도서 정보 표시
+            function display() {
+                //$record 안에 해당 번호 <book> 의 정보를 들고오기 
+                    //var $a; jQuery 변수. jQuery에서 사용하는 내장 함수들을 모두 사용할 수 있음.
+                    // $은 jquery ㄷ표 문자 해당 변수에는 jquery object를 담는 변수임을 유추해 볼수 있다. 
+                $record = $(Doc).find("book").eq(count);
+                // xml file 안에서 정보 담아서 오기 
+                // from1 의 input type = "text"의 name = "txtKind"인부분의 value를 xml 파일에서 불러온
+                // 데이터로 넣어준다 .
+                //.attr : Get the value of an attribute for the first element
+                //$(selector).attr(attribute,value)
+                // 선택한 요소의 속성값을 설정하거나 반환 
+                form1.txtKind.value = $record.attr("kind"); //<kind>
+                form1.txtTitle.value = $record.find("title").text(); //<title>
+                form1.txtAuthor.value = $record.find("author").text(); //<author>
+                form1.txtPublisher.value = $record.find("publisher").text(); //<publisher>
+                form1.txtPrice.value = $record.find("price").text(); //<price>
+            } 
+        });
+    </script>
+</head>
+<body>
+    <form name = "form1">
+        <h3> XML 도서 정보 검색</h3>
+        <table>
+            <tr>
+                <td class = "u_col1">책 제목</td>
+                <td class = "u_col2"><input type="text" name = "txtTitle"></td>
+            </tr>
+            <tr>
+                <td class = "u_col1">책 종류</td>
+                <td class = "u_col2"><input type="text" name = "txtKind"></td>
+            </tr>
+            <tr>
+                <td class = "u_col1">책 저자</td>
+                <td class = "u_col2"><input type="text" name = "txtAuthor"></td>
+            </tr>
+            <tr>
+                <td class = "u_col1">출판사</td>
+                <td class = "u_col2"><input type="text" name = "txtPublisher"></td>
+            </tr>
+            <tr>
+                <td class = "u_col1">책가격</td>
+                <td class = "u_col2"><input type="text" name = "txtPrice"></td>
+            </tr>
+            <tr>
+                <td class = "u_center" colspan="2">
+                    <input type= "button" name = "btnFirst" value = "처음" />
+                    <input type= "button" name = "btnPrevious" value = "이전" />
+                    <input type= "button" name = "btnNext" value = "다음" />
+                    <input type= "button" name = "btnLast" value = "마지막" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

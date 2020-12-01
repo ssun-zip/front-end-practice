@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<library>
+    <book>
+        <kind> 컴퓨터 </kind>
+        <title> XML Database Programming </title>
+        <author> 홍길동 </author>
+        <publisher> 행복 출판사 </publisher>
+        <price> 25000 </price>
+    </book>
+    <book>
+        <kind> 컴퓨터 </kind>
+        <title> JSP 2.3 Programming </title>
+        <author> 최범균 </author>
+        <publisher> 가메 출판사 </publisher>
+        <price> 27000 </price>
+    </book>
+    <book>
+        <kind> 문학 </kind>
+        <title> 일인칭 단수 </title>
+        <author> 무라카미 하루키 </author>
+        <publisher> 문학동네 </publisher>
+        <price> 13050 </price>
+    </book>
+    <book>
+        <kind> 트랜드 </kind>
+        <title> 트랜드 코리아 2021 </title>
+        <author> 김난도 </author>
+        <publisher> 미래의 창 </publisher>
+        <price> 16200 </price>
+    </book>
+</library>
